@@ -1,22 +1,41 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X, Search, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Logo } from './Logo';
-import { ThemeToggle } from './ThemeToggle';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    
+    // Check initial theme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    setIsDark(shouldBeDark);
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   const navLinks = [
     { href: '/', label: 'الرئيسية' },
@@ -35,7 +54,14 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-charcoal dark:text-sand hover:bg-sand/50 dark:hover:bg-charcoal/50 transition-colors"
+              aria-label={isDark ? 'الوضع النهاري' : 'الوضع الليلي'}
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-full text-charcoal dark:text-sand hover:bg-sand/50 dark:hover:bg-charcoal/50 transition-colors"
