@@ -1,3 +1,5 @@
+import recipesData from '@/data/recipes.json';
+
 export interface Recipe {
   id: string;
   title: string;
@@ -13,14 +15,15 @@ export interface Recipe {
   image: string;
   ingredients: string[];
   instructions: string[];
+  source?: string;
 }
 
-export async function getAllRecipes(): Promise<Recipe[]> {
-  const recipes = await import('@/data/recipes.json');
-  return recipes.default;
+const recipes: Recipe[] = recipesData as Recipe[];
+
+export function getAllRecipes(): Recipe[] {
+  return recipes;
 }
 
-export async function getRecipeById(id: string): Promise<Recipe | undefined> {
-  const recipes = await getAllRecipes();
+export function getRecipeById(id: string): Recipe | undefined {
   return recipes.find(recipe => recipe.id === id);
 }

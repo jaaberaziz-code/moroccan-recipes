@@ -8,15 +8,15 @@ interface RecipePageProps {
   params: { id: string };
 }
 
-export async function generateStaticParams() {
-  const recipes = await getAllRecipes();
+export function generateStaticParams() {
+  const recipes = getAllRecipes();
   return recipes.map((recipe) => ({
     id: recipe.id,
   }));
 }
 
-export default async function RecipePage({ params }: RecipePageProps) {
-  const recipe = await getRecipeById(params.id);
+export default function RecipePage({ params }: RecipePageProps) {
+  const recipe = getRecipeById(params.id);
 
   if (!recipe) {
     notFound();
