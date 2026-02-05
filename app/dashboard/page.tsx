@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Search, Edit2, Trash2, Download, Upload, Save } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, Download, Upload, Save, Eye, X, ChevronLeft, Clock, Users, ChefHat } from 'lucide-react';
 
 interface Recipe {
   id: string;
@@ -44,9 +44,10 @@ const DIFFICULTIES = [
 export default function Dashboard() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isEditing, setIsEditing] = useState(false);
+  const [viewMode, setViewMode] = useState<'list' | 'edit' | 'view'>('list');
   const [currentRecipe, setCurrentRecipe] = useState<Recipe | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   useEffect(() => {
     loadRecipes();
@@ -92,12 +93,20 @@ export default function Dashboard() {
       instructionsAr: [],
       source: '',
     });
-    setIsEditing(true);
+    setImagePreview(null);
+    setViewMode('edit');
   };
 
   const handleEdit = (recipe: Recipe) => {
     setCurrentRecipe({ ...recipe });
-    setIsEditing(true);
+    setImagePreview(recipe.image || null);
+    setViewMode('edit');
+  };
+
+  const handleView = (recipe: Recipe) => {
+    setCurrentRecipe(recipe);
+    setImagePreview(recipe.image || null);
+    setViewMode('view');
   };
 
   const handleDelete = (id: string) => {
@@ -110,7 +119,6 @@ export default function Dashboard() {
     if (!currentRecipe) return;
 
     if (!currentRecipe.id) {
-      // Generate ID from Arabic title
       const newId = currentRecipe.titleAr
         ? currentRecipe.titleAr
             .toLowerCase()
@@ -126,17 +134,23 @@ export default function Dashboard() {
         recipes.map((r) => (r.id === currentRecipe.id ? currentRecipe : r))
       );
     }
-    setIsEditing(false);
+    setViewMode('list');
     setCurrentRecipe(null);
+    setImagePreview(null);
+  };
+
+  const handleBack = () => {
+    setViewMode('list');
+    setCurrentRecipe(null);
+    setImagePreview(null);
   };
 
   const handleExport = () => {
     const dataStr = JSON.stringify(recipes, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-    const exportFileDefaultName = 'recipes.json';
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
-    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.setAttribute('download', 'recipes.json');
     linkElement.click();
   };
 
@@ -179,6 +193,11 @@ export default function Dashboard() {
     setCurrentRecipe({ ...currentRecipe, [field]: array });
   };
 
+  const handleImageChange = (url: string) => {
+    setCurrentRecipe({ ...currentRecipe!, image: url });
+    setImagePreview(url || null);
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -190,69 +209,218 @@ export default function Dashboard() {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">
-                🍽️ لوحة التحكم - وصفات شيماء
+  // VIEW MODE - Show recipe details
+  if (viewMode === 'view' && currentRecipe) {
+    return (
+      <div className="min-h-screen bg-gray-50" dir="rtl">
+        {/* Header */}
+        <header className="bg-white shadow-sm border-b sticky top-0 z-10">
+          <div className="max-w-7xl mx-auto px-4 py-4">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={handleBack}
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+              >
+                <ChevronLeft className="w-5 h-5" />
+                <span className="hidden sm:inline">رجوع</span>
+              </button>
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
+                {currentRecipe.titleAr || currentRecipe.title}
               </h1>
-              <p className="text-sm text-gray-500 mt-1">
-                {recipes.length} وصفة متاحة
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <label className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition">
-                <Upload className="w-4 h-4" />
-                <span>استيراد</span>
-                <input
-                  type="file"
-                  accept=".json"
-                  onChange={handleImport}
-                  className="hidden"
-                />
-              </label>
-              <button
-                onClick={handleExport}
-                className="flex items-center gap-2 px-4 py-2 bg-terracotta text-white rounded-lg hover:bg-terracotta/90 transition"
-              >
-                <Download className="w-4 h-4" />
-                <span>تصدير JSON</span>
-              </button>
-              <button
-                onClick={handleNewRecipe}
-                className="flex items-center gap-2 px-4 py-2 bg-majorelle text-white rounded-lg hover:bg-majorelle/90 transition"
-              >
-                <Plus className="w-4 h-4" />
-                <span>وصفة جديدة</span>
-              </button>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {isEditing ? (
-          /* Edit Form */
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">
-                {currentRecipe?.id ? 'تعديل الوصفة' : 'وصفة جديدة'}
-              </h2>
-              <button
-                onClick={() => setIsEditing(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ✕
-              </button>
+        <main className="max-w-4xl mx-auto px-4 py-6">
+          {/* Image */}
+          <div className="bg-white rounded-xl shadow-sm border overflow-hidden mb-6">
+            <div className="aspect-video sm:aspect-[21/9] relative bg-gray-100">
+              {currentRecipe.image ? (
+                <img
+                  src={currentRecipe.image}
+                  alt={currentRecipe.titleAr || currentRecipe.title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  <span>لا توجد صورة</span>
+                </div>
+              )}
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Info Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+              <Clock className="w-5 h-5 mx-auto mb-1 text-terracotta" />
+              <p className="text-xs text-gray-500">التحضير</p>
+              <p className="font-medium text-sm">{currentRecipe.prepTime || '-'}</p>
+            </div>
+            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+              <Clock className="w-5 h-5 mx-auto mb-1 text-majorelle" />
+              <p className="text-xs text-gray-500">الطهي</p>
+              <p className="font-medium text-sm">{currentRecipe.cookTime || '-'}</p>
+            </div>
+            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+              <Users className="w-5 h-5 mx-auto mb-1 text-saffron" />
+              <p className="text-xs text-gray-500">الأشخاص</p>
+              <p className="font-medium text-sm">{currentRecipe.servings || '-'}</p>
+            </div>
+            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+              <ChefHat className="w-5 h-5 mx-auto mb-1 text-green-600" />
+              <p className="text-xs text-gray-500">الصعوبة</p>
+              <p className="font-medium text-sm">{currentRecipe.difficultyAr || currentRecipe.difficulty}</p>
+            </div>
+          </div>
+
+          {/* Ingredients */}
+          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6 mb-6">
+            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-terracotta rounded-full"></span>
+              المقادير
+            </h2>
+            {currentRecipe.ingredientsAr?.length > 0 ? (
+              <ul className="space-y-2">
+                {currentRecipe.ingredientsAr.map((ing, i) => (
+                  <li key={i} className="flex items-start gap-3 p-2 bg-gray-50 rounded-lg">
+                    <span className="w-6 h-6 bg-terracotta text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    <span className="text-gray-700">{ing}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : currentRecipe.ingredients?.length > 0 ? (
+              <ul className="space-y-2">
+                {currentRecipe.ingredients.map((ing, i) => (
+                  <li key={i} className="flex items-start gap-3 p-2 bg-gray-50 rounded-lg">
+                    <span className="w-6 h-6 bg-terracotta text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    <span className="text-gray-700">{ing}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-500 text-center py-4">لا توجد مقادير</p>
+            )}
+          </div>
+
+          {/* Instructions */}
+          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6 mb-6">
+            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+              <span className="w-1 h-6 bg-majorelle rounded-full"></span>
+              طريقة التحضير
+            </h2>
+            {currentRecipe.instructionsAr?.length > 0 ? (
+              <ol className="space-y-4">
+                {currentRecipe.instructionsAr.map((inst, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="w-8 h-8 bg-majorelle text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    <p className="text-gray-700 leading-relaxed pt-1">{inst}</p>
+                  </li>
+                ))}
+              </ol>
+            ) : currentRecipe.instructions?.length > 0 ? (
+              <ol className="space-y-4">
+                {currentRecipe.instructions.map((inst, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="w-8 h-8 bg-majorelle text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    <p className="text-gray-700 leading-relaxed pt-1">{inst}</p>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="text-gray-500 text-center py-4">لا توجد خطوات</p>
+            )}
+          </div>
+
+          {/* Actions */}
+          <div className="flex gap-3">
+            <button
+              onClick={() => handleEdit(currentRecipe)}
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-terracotta text-white rounded-xl hover:bg-terracotta/90 transition"
+            >
+              <Edit2 className="w-5 h-5" />
+              <span>تعديل الوصفة</span>
+            </button>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // EDIT MODE
+  if (viewMode === 'edit') {
+    return (
+      <div className="min-h-screen bg-gray-50" dir="rtl">
+        {/* Header */}
+        <header className="bg-white shadow-sm border-b sticky top-0 z-10">
+          <div className="max-w-4xl mx-auto px-4 py-4">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={handleBack}
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+              >
+                <ChevronLeft className="w-5 h-5" />
+                <span className="hidden sm:inline">رجوع</span>
+              </button>
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900">
+                {currentRecipe?.id ? 'تعديل الوصفة' : 'وصفة جديدة'}
+              </h1>
+            </div>
+          </div>
+        </header>
+
+        <main className="max-w-4xl mx-auto px-4 py-6">
+          {/* Image Preview Section */}
+          <div className="bg-white rounded-xl shadow-sm border overflow-hidden mb-6">
+            <div className="aspect-video sm:aspect-[21/9] relative bg-gray-100">
+              {imagePreview ? (
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="w-full h-full object-cover"
+                  onError={() => setImagePreview(null)}
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center text-gray-400">
+                  <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl">🖼️</span>
+                  </div>
+                  <span>معاينة الصورة</span>
+                </div>
+              )}
+            </div>
+            <div className="p-4 border-t">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                رابط الصورة
+              </label>
+              <input
+                type="url"
+                value={currentRecipe?.image || ''}
+                onChange={(e) => handleImageChange(e.target.value)}
+                className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-sm"
+                placeholder="https://example.com/image.jpg"
+              />
+              <p className="text-xs text-gray-500 mt-2">
+                أدخل رابط الصورة مباشرة للمعاينة
+              </p>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {/* Arabic Title */}
-              <div>
+              <div className="sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   الاسم بالعربية *
                 </label>
@@ -262,13 +430,13 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, titleAr: e.target.value })
                   }
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                   placeholder="مثال: طاجين مغربي"
                 />
               </div>
 
               {/* French/English Title */}
-              <div>
+              <div className="sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   الاسم بالفرنسية
                 </label>
@@ -278,7 +446,7 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, title: e.target.value })
                   }
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                   placeholder="Tajine marocain"
                 />
               </div>
@@ -298,7 +466,7 @@ export default function Dashboard() {
                       categoryAr: cat?.ar || '',
                     });
                   }}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                 >
                   {CATEGORIES.map((cat) => (
                     <option key={cat.value} value={cat.value}>
@@ -323,7 +491,7 @@ export default function Dashboard() {
                       difficultyAr: diff?.ar || '',
                     });
                   }}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                 >
                   {DIFFICULTIES.map((diff) => (
                     <option key={diff.value} value={diff.value}>
@@ -344,7 +512,7 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, prepTime: e.target.value })
                   }
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                   placeholder="15 دقيقة"
                 />
               </div>
@@ -360,7 +528,7 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, cookTime: e.target.value })
                   }
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                   placeholder="30 دقيقة"
                 />
               </div>
@@ -379,254 +547,281 @@ export default function Dashboard() {
                       servings: parseInt(e.target.value),
                     })
                   }
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                 />
               </div>
+            </div>
 
-              {/* Image URL */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  رابط الصورة
-                </label>
-                <input
-                  type="url"
-                  value={currentRecipe?.image || ''}
-                  onChange={(e) =>
-                    setCurrentRecipe({ ...currentRecipe!, image: e.target.value })
-                  }
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
-                  placeholder="https://example.com/image.jpg"
-                />
+            {/* Ingredients Arabic */}
+            <div className="mt-6">
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                المقادير (بالعربية)
+              </label>
+              <div className="space-y-2">
+                {currentRecipe?.ingredientsAr?.map((ing, index) => (
+                  <div key={index} className="flex gap-2">
+                    <input
+                      type="text"
+                      value={ing}
+                      onChange={(e) =>
+                        updateArrayField('ingredientsAr', index, e.target.value)
+                      }
+                      className="flex-1 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                      placeholder="مثال: دجاج (500غ)"
+                    />
+                    <button
+                      onClick={() => removeArrayField('ingredientsAr', index)}
+                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-xl"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  onClick={() => addArrayField('ingredientsAr')}
+                  className="w-full py-3 border-2 border-dashed border-terracotta text-terracotta rounded-xl hover:bg-terracotta/5"
+                >
+                  + إضافة مكون
+                </button>
               </div>
+            </div>
 
-              {/* Ingredients Arabic */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  المقادير (بالعربية)
-                </label>
-                <div className="space-y-2">
-                  {currentRecipe?.ingredientsAr?.map((ing, index) => (
-                    <div key={index} className="flex gap-2">
-                      <input
-                        type="text"
-                        value={ing}
-                        onChange={(e) =>
-                          updateArrayField('ingredientsAr', index, e.target.value)
-                        }
-                        className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
-                        placeholder="مثال: دجاج (500غ)"
-                      />
-                      <button
-                        onClick={() => removeArrayField('ingredientsAr', index)}
-                        className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                  <button
-                    onClick={() => addArrayField('ingredientsAr')}
-                    className="text-sm text-terracotta hover:text-terracotta/80"
-                  >
-                    + إضافة مكون
-                  </button>
-                </div>
-              </div>
-
-              {/* Instructions Arabic */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  طريقة التحضير (بالعربية)
-                </label>
-                <div className="space-y-2">
-                  {currentRecipe?.instructionsAr?.map((inst, index) => (
-                    <div key={index} className="flex gap-2">
+            {/* Instructions Arabic */}
+            <div className="mt-6">
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                طريقة التحضير (بالعربية)
+              </label>
+              <div className="space-y-3">
+                {currentRecipe?.instructionsAr?.map((inst, index) => (
+                  <div key={index} className="flex gap-2">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-medium text-gray-500">الخطوة {index + 1}</span>
+                      </div>
                       <textarea
                         value={inst}
                         onChange={(e) =>
                           updateArrayField('instructionsAr', index, e.target.value)
                         }
-                        className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                        className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
                         rows={2}
-                        placeholder={`الخطوة ${index + 1}`}
                       />
-                      <button
-                        onClick={() => removeArrayField('instructionsAr', index)}
-                        className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
                     </div>
-                  ))}
-                  <button
-                    onClick={() => addArrayField('instructionsAr')}
-                    className="text-sm text-terracotta hover:text-terracotta/80"
-                  >
-                    + إضافة خطوة
-                  </button>
-                </div>
+                    <button
+                      onClick={() => removeArrayField('instructionsAr', index)}
+                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-xl self-end"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  onClick={() => addArrayField('instructionsAr')}
+                  className="w-full py-3 border-2 border-dashed border-majorelle text-majorelle rounded-xl hover:bg-majorelle/5"
+                >
+                  + إضافة خطوة
+                </button>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex justify-end gap-3 mt-8 pt-6 border-t">
+            <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t">
               <button
-                onClick={() => setIsEditing(false)}
-                className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+                onClick={handleBack}
+                className="flex-1 px-6 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
               >
                 إلغاء
               </button>
               <button
                 onClick={handleSave}
-                className="flex items-center gap-2 px-6 py-2 bg-terracotta text-white rounded-lg hover:bg-terracotta/90 transition"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-terracotta text-white rounded-xl hover:bg-terracotta/90 transition"
               >
-                <Save className="w-4 h-4" />
+                <Save className="w-5 h-5" />
                 <span>حفظ الوصفة</span>
               </button>
             </div>
           </div>
-        ) : (
-          /* Recipe List */
-          <>
-            {/* Search */}
-            <div className="mb-6">
-              <div className="relative max-w-md">
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+        </main>
+      </div>
+    );
+  }
+
+  // LIST MODE
+  return (
+    <div className="min-h-screen bg-gray-50" dir="rtl">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                🍽️ لوحة التحكم
+              </h1>
+              <p className="text-sm text-gray-500 mt-1">
+                {recipes.length} وصفة متاحة
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <label className="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 cursor-pointer transition flex-1 sm:flex-none">
+                <Upload className="w-4 h-4" />
+                <span className="text-sm">استيراد</span>
                 <input
-                  type="text"
-                  placeholder="ابحث عن وصفة..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pr-10 pl-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  type="file"
+                  accept=".json"
+                  onChange={handleImport}
+                  className="hidden"
                 />
-              </div>
+              </label>
+              <button
+                onClick={handleExport}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-terracotta text-white rounded-xl hover:bg-terracotta/90 transition flex-1 sm:flex-none"
+              >
+                <Download className="w-4 h-4" />
+                <span className="text-sm">تصدير</span>
+              </button>
+              <button
+                onClick={handleNewRecipe}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-majorelle text-white rounded-xl hover:bg-majorelle/90 transition flex-1 sm:flex-none"
+              >
+                <Plus className="w-4 h-4" />
+                <span className="text-sm">جديدة</span>
+              </button>
             </div>
+          </div>
+        </div>
+      </header>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-white p-4 rounded-xl shadow-sm border">
-                <p className="text-sm text-gray-500">إجمالي الوصفات</p>
-                <p className="text-2xl font-bold text-gray-900">{recipes.length}</p>
-              </div>
-              <div className="bg-white p-4 rounded-xl shadow-sm border">
-                <p className="text-sm text-gray-500">بالعربية</p>
-                <p className="text-2xl font-bold text-green-600">
-                  {recipes.filter((r) => r.titleAr && /[\u0600-\u06FF]/.test(r.titleAr)).length}
-                </p>
-              </div>
-              <div className="bg-white p-4 rounded-xl shadow-sm border">
-                <p className="text-sm text-gray-500">بالفرنسية فقط</p>
-                <p className="text-2xl font-bold text-amber-600">
-                  {recipes.filter((r) => !r.titleAr || !/[\u0600-\u06FF]/.test(r.titleAr)).length}
-                </p>
-              </div>
-              <div className="bg-white p-4 rounded-xl shadow-sm border">
-                <p className="text-sm text-gray-500">النتائج المعروضة</p>
-                <p className="text-2xl font-bold text-majorelle">{filteredRecipes.length}</p>
-              </div>
-            </div>
+      <main className="max-w-7xl mx-auto px-4 py-6">
+        {/* Search */}
+        <div className="mb-6">
+          <div className="relative">
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="ابحث عن وصفة..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pr-12 pl-4 py-4 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-base"
+            />
+          </div>
+        </div>
 
-            {/* Recipes Table */}
-            <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-gray-50 border-b">
-                  <tr>
-                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
-                      الوصفة
-                    </th>
-                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
-                      التصنيف
-                    </th>
-                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
-                      الصعوبة
-                    </th>
-                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
-                      اللغة
-                    </th>
-                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
-                      الإجراءات
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {filteredRecipes.map((recipe) => {
-                    const hasArabic = recipe.titleAr && /[\u0600-\u06FF]/.test(recipe.titleAr);
-                    return (
-                      <tr key={recipe.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-3">
-                            <img
-                              src={recipe.image || '/images/placeholder.jpg'}
-                              alt={recipe.titleAr || recipe.title}
-                              className="w-12 h-12 rounded-lg object-cover"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
-                              }}
-                            />
-                            <div>
-                              <p className="font-medium text-gray-900">
-                                {recipe.titleAr || recipe.title}
-                              </p>
-                              {recipe.titleAr && recipe.title && (
-                                <p className="text-sm text-gray-500">{recipe.title}</p>
-                              )}
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">
-                            {recipe.categoryAr || recipe.category}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4">
-                          <span
-                            className={`px-3 py-1 rounded-full text-sm ${
-                              recipe.difficulty === 'Easy'
-                                ? 'bg-green-100 text-green-700'
-                                : recipe.difficulty === 'Hard'
-                                ? 'bg-red-100 text-red-700'
-                                : 'bg-yellow-100 text-yellow-700'
-                            }`}
-                          >
-                            {recipe.difficultyAr || recipe.difficulty}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4">
-                          {hasArabic ? (
-                            <span className="text-green-600 text-sm">✓ عربي</span>
-                          ) : (
-                            <span className="text-amber-600 text-sm">⚠ فرنسي</span>
-                          )}
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => handleEdit(recipe)}
-                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                            >
-                              <Edit2 className="w-4 h-4" />
-                            </button>
-                            <button
-                              onClick={() => handleDelete(recipe.id)}
-                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+        {/* Stats */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <p className="text-xs text-gray-500">الوصفات</p>
+            <p className="text-2xl font-bold text-gray-900">{recipes.length}</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <p className="text-xs text-gray-500">بالعربية</p>
+            <p className="text-2xl font-bold text-green-600">
+              {recipes.filter((r) => r.titleAr && /[\u0600-\u06FF]/.test(r.titleAr)).length}
+            </p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <p className="text-xs text-gray-500">فرنسية</p>
+            <p className="text-2xl font-bold text-amber-600">
+              {recipes.filter((r) => !r.titleAr || !/[\u0600-\u06FF]/.test(r.titleAr)).length}
+            </p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <p className="text-xs text-gray-500">النتائج</p>
+            <p className="text-2xl font-bold text-majorelle">{filteredRecipes.length}</p>
+          </div>
+        </div>
 
-            {filteredRecipes.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-500">لا توجد وصفات مطابقة للبحث</p>
+        {/* Recipe Cards - Mobile Friendly */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredRecipes.map((recipe) => {
+            const hasArabic = recipe.titleAr && /[\u0600-\u06FF]/.test(recipe.titleAr);
+            return (
+              <div
+                key={recipe.id}
+                className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition"
+              >
+                {/* Image */}
+                <div className="aspect-video relative bg-gray-100">
+                  <img
+                    src={recipe.image || '/images/placeholder.jpg'}
+                    alt={recipe.titleAr || recipe.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
+                    }}
+                  />
+                  <div className="absolute top-2 left-2">
+                    <span
+                      className={`px-2 py-1 rounded-lg text-xs font-medium ${
+                        hasArabic
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-amber-100 text-amber-700'
+                      }`}
+                    >
+                      {hasArabic ? '✓ عربي' : '⚡ فرنسي'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-4">
+                  <h3 className="font-bold text-gray-900 mb-1 line-clamp-1">
+                    {recipe.titleAr || recipe.title}
+                  </h3>
+                  {recipe.titleAr && recipe.title && (
+                    <p className="text-sm text-gray-500 mb-2 line-clamp-1">{recipe.title}</p>
+                  )}
+                  
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-1 bg-gray-100 rounded-lg text-xs">
+                      {recipe.categoryAr || recipe.category}
+                    </span>
+                    <span
+                      className={`px-2 py-1 rounded-lg text-xs ${
+                        recipe.difficulty === 'Easy'
+                          ? 'bg-green-100 text-green-700'
+                          : recipe.difficulty === 'Hard'
+                          ? 'bg-red-100 text-red-700'
+                          : 'bg-yellow-100 text-yellow-700'
+                      }`}
+                    >
+                      {recipe.difficultyAr || recipe.difficulty}
+                    </span>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleView(recipe)}
+                      className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition text-sm"
+                    >
+                      <Eye className="w-4 h-4" />
+                      <span>عرض</span>
+                    </button>
+                    <button
+                      onClick={() => handleEdit(recipe)}
+                      className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-terracotta/10 text-terracotta rounded-lg hover:bg-terracotta/20 transition text-sm"
+                    >
+                      <Edit2 className="w-4 h-4" />
+                      <span>تعديل</span>
+                    </button>
+                    <button
+                      onClick={() => handleDelete(recipe.id)}
+                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg transition"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
               </div>
-            )}
-          </>
+            );
+          })}
+        </div>
+
+        {filteredRecipes.length === 0 && (
+          <div className="text-center py-12 bg-white rounded-xl border">
+            <div className="text-4xl mb-2">🔍</div>
+            <p className="text-gray-500">لا توجد وصفات مطابقة للبحث</p>
+          </div>
         )}
       </main>
     </div>
