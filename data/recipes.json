@@ -2,9 +2,9 @@
   {
     "id": "harira-choumicha",
     "title": "Harira Choumicha",
-    "titleAr": "Harira Choumicha",
+    "titleAr": "حريرة شميشة",
     "description": "Pour prÃ©parer votre harira choumicha, versez un peu d'huile d'olive dans une marmite et faites revenir les oignons ainsi que la coriandre, le persil ...",
-    "descriptionAr": "وصفة Harira Choumicha",
+    "descriptionAr": "وصفة حريرة شميشة",
     "category": "Soup",
     "categoryAr": "شوربة",
     "prepTime": "15 minutes",
@@ -40,14 +40,50 @@
       "Ajoutez les vermicelles et laissez cuire 5 minutes.",
       "Pendant ce temps, prÃ©parez votre liant : dÃ©layez vivement la farine dans une petite quantitÃ© dâeau. Ajoutez ce mÃ©lange petit Ã  petit Ã  votre soupe en la mÃ©langeant. Selon la texture que vous souhaitez, il se peut que vous n'utilisiez pas toute la quantitÃ©.  Laissez Ã©paissir quelques minutes. Votre harira choumicha est prÃªte !"
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "لحم خروف (600 غ)",
+      "هريس طماطم (1 كغ)",
+      "حمص (200 غ)",
+      "دقيق (100 غ)",
+      "ماء (2 لتر)",
+      "عدس أخضر (100 غ)",
+      "شعرية (100 غ)",
+      "كرفس مفروم (3 عروق)",
+      "بصل (2)",
+      "كركم (4 ملاعق كبيرة)",
+      "مركز طماطم (2 ملاعق كبيرة)",
+      "قرفة (1 ملعقة كبيرة)",
+      "زنجبيل (1 ملعقة كبيرة)",
+      "رأس الحانوت (1 ملعقة كبيرة)",
+      "قزبر مفروم",
+      "معدنوس مفروم",
+      "زيت زيتون",
+      "ملح، فلفل"
+    ],
+    "instructionsAr": [
+      "لتحضير حريرة شميشة، صبي القليل من زيت الزيتون في قدر وحمري البصل مع القزبر والمعدنوس والكرفس",
+      "قطعي اللحم إلى قطع وحمريه لبضع دقائق",
+      "أضيفي الكركم والقرفة والزنجبيل ورأس الحانوت ومركز الطماطم لمدة 5 دقائق على نار متوسطة",
+      "حركي باستمرار حتى لا تلتصق",
+      "أضيفي هريس الطماطم واتركيها تطهى لمدة 10 دقائق إضافية",
+      "اغسلي العدس وأضيفيه",
+      "صفي الحمص المنقوع مسبقاً وأضيفيه، ثم غطي الكل بالماء المغلي",
+      "أضيفي الملح والفلفل",
+      "اتركي الحريرة تغلي، ثم خففي النار واتركيها على نار هادئة لمدة ساعتين",
+      "أضيفي الشعرية واتركيها تطهى 5 دقائق",
+      "في هذا الوقت، حضري الخليط المكثف (التدويرة): اخلطي الدقيق في قليل من الماء بسرعة",
+      "أضيفي هذا الخليط تدريجياً إلى الشوربة مع التحريك المستمر",
+      "اتركيها تتكاثف لبضع دقائق",
+      "حريرتك جاهزة!"
+    ]
   },
   {
     "id": "couscous-royal",
     "title": "Couscous royal",
-    "titleAr": "Couscous royal",
+    "titleAr": "كسكس ملكي",
     "description": "DÃ©coupez les parties nobles du poulet (cuisse, blanc et ailes) en morceaux et l'Ã©paule d'agneau en cubes assez gros. Dans le bas du couscoussier, fa...",
-    "descriptionAr": "وصفة Couscous royal",
+    "descriptionAr": "وصفة كسكس ملكي",
     "category": "Main Course",
     "categoryAr": "طبق رئيسي",
     "prepTime": "20 minutes",
@@ -85,14 +121,52 @@
       "PrÃ©parez la semoule selon l'indication du paquet et incorporez du beurre en parcelles Ã  l'aide d'une fourchette afin de bien sÃ©parer les grains. Faites griller les merguez Ã  la poÃªle.",
       "Le couscous, les viandes, les lÃ©gumes cuits et la sauce seront servis dans des plats sÃ©parÃ©s. Par exemple, prÃ©sentez la semoule en dÃ´me sur un grand plat et disposez dessus les merguez en Ã©toile. PrÃ©levez avec une Ã©cumoire, les lÃ©gumes et les viandes, dressez-les dans deux plats creux sÃ©parÃ©s. Versez le bouillon dans une soupiÃ¨re. PrÃ©levez-en une louche pour y diluer l'harissa."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "كسكس (متوسط) (1 كغ)",
+      "كتف خروف مخلى (1 كغ)",
+      "دجاج (1)",
+      "نقانق مرقاز (12)",
+      "حمص (2 كوب)",
+      "كوسة (قرع أخضر) (4)",
+      "جزر (4)",
+      "لفت (2)",
+      "باذنجان (2)",
+      "طماطم ناضجة (3)",
+      "بصل (1)",
+      "زبيب (150 غ)",
+      "سمن (3 ملاعق كبيرة)",
+      "مركز طماطم",
+      "رأس الحانوت",
+      "بابريكا",
+      "بقدونس",
+      "هريسة",
+      "زيت زيتون",
+      "ملح",
+      "فلفل"
+    ],
+    "instructionsAr": [
+      "قطعي الدجاج وكتف الخروف إلى قطع كبيرة",
+      "في قدر الكسكس (البرمة)، حمريهم على نار قوية لمدة 5-10 دقائق في زيت الزيتون",
+      "أضيفي السمن واللحوم والبصل المفروم في قدر كبير",
+      "أضيفي توابل الكسكس والملح والفلفل",
+      "أضيفي الطماطم والماء واتركيه يطهى 15 دقيقة",
+      "قشري وقطعي الخضروات (جزر، لفت، باذنجان، كوسة)",
+      "انقعي الزبيب",
+      "أضيفي الخضروات والبقدونس والتوابل والماء",
+      "اطهي لمدة 45 دقيقة إلى ساعة",
+      "أضيفي الحمص والزبيب قبل النهاية بـ 5 دقائق",
+      "حضري السميد حسب التعليمات وأضيفي الزبدة",
+      "اشوي المرقاز",
+      "قدمي الكسكس واللحوم والخضروات والمرق في أطباق منفصلة."
+    ]
   },
   {
     "id": "tajine-marocain",
     "title": "Tajine marocain",
-    "titleAr": "Tajine marocain",
+    "titleAr": "طاجين مغربي",
     "description": "Chauffez 1 c. Ã  soupe dâhuile dans un plat Ã  tajine au feu. Faites-y dorer la viande sur toutes les faces durant 10 min....",
-    "descriptionAr": "وصفة Tajine marocain",
+    "descriptionAr": "وصفة طاجين مغربي",
     "category": "Main Course",
     "categoryAr": "طبق رئيسي",
     "prepTime": "10 minutes",
@@ -120,14 +194,39 @@
       "Ajoutez tous les lÃ©gumes, dans le tajine avec du cumin et du 4 Ã©pices, du sel et du poivre, le safran, les olives et un verre dâeau. Couvrez et laissez cuire 30 min Ã  feu doux.",
       "Ajoutez la tomate lavÃ©e et coupÃ©e en morceaux. Laissez cuire encore 15 min. Servez chaud avec du pain."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "لحم خروف (800 غ)",
+      "بطاطس (4)",
+      "جزر (1)",
+      "طماطم (1)",
+      "كوسة (1)",
+      "بصل (1)",
+      "زيتون أخضر",
+      "زعفران",
+      "كمون",
+      "زيت زيتون",
+      "ملح",
+      "فلفل"
+    ],
+    "instructionsAr": [
+      "سخني ملعقة زيت في طاجين",
+      "حمري اللحم من كل الجهات لمدة 10 دقائق",
+      "قشري البصل والبطاطس والجزر وقطعيهم",
+      "اغسلي الكوسة وقطعيها",
+      "أضيفي كل الخضروات إلى الطاجين مع الكمون والبهارات والملح والفلفل والزعفران والزيتون وكوب ماء",
+      "غطي واتركيه يطهى 30 دقيقة على نار هادئة",
+      "أضيفي الطماطم المقطعة",
+      "اطهي 15 دقيقة إضافية",
+      "قدميه ساخناً مع الخبز."
+    ]
   },
   {
     "id": "couscous-traditionnel-aux-l-gumes",
     "title": "Couscous traditionnel aux lÃ©gumes",
-    "titleAr": "Couscous traditionnel aux lÃ©gumes",
+    "titleAr": "كسكس تقليدي بالخضر",
     "description": "Dans une cocotte, faites revenir dans l'huile d'olive les oignons Ã©mincÃ©s et les tomates mixÃ©es pendant 5 min environ. Ajoutez le cube de bouillon ...",
-    "descriptionAr": "وصفة Couscous traditionnel aux lÃ©gumes",
+    "descriptionAr": "وصفة كسكس تقليدي بالخضر",
     "category": "Main Course",
     "categoryAr": "طبق رئيسي",
     "prepTime": "25 minutes",
@@ -161,14 +260,45 @@
       "ParallÃ¨lement, prÃ©parez et faites cuire la semoule. Une fois cuite, versez-la dans une grande assiette plate et formez un creux. Versez au centre un peu de votre sauce, disposez vos lÃ©gumes au-dessus ainsi que votre viande. Nappez d'un peu de sauce Ã  nouveau.",
       "Conservez le restant de sauce dans un bol Ã  disposition, avec lequel chacun pourra se resservir Ã  sa guise."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "لحم بقري (800 غ)",
+      "سميد (300 غ)",
+      "حمص معلب (200 غ)",
+      "طماطم (5)",
+      "لفت (2)",
+      "كوسة (5)",
+      "جزر (5)",
+      "بصل (2)",
+      "مكعب مرق خضار",
+      "بابريكا",
+      "كركم",
+      "رأس الحانوت",
+      "زنجبيل",
+      "ملح وفلفل",
+      "زيت زيتون",
+      "قزبر",
+      "بقدونس"
+    ],
+    "instructionsAr": [
+      "في طنجرة، حمري البصل المفروم والطماطم في زيت الزيتون لمدة 5 دقائق",
+      "أضيفي مكعب المرق والتوابل والأعشاب واطهي بضع دقائق",
+      "أضيفي اللحم المقطع وحمريه قليلاً",
+      "أضيفي اللفت المقطع وغطي بـ 1 لتر ماء مغلي",
+      "اطهي 25 دقيقة",
+      "قطعي الجزر وأضيفيه",
+      "اطهي 15 دقيقة",
+      "أضيفي الحمص واطهي 5-10 دقائق",
+      "حضري السميد واطهيه",
+      "ضعيه في طبق كبير، اسكبي القليل من المرق، رتبي الخضار واللحم فوقه."
+    ]
   },
   {
     "id": "sellou-la-marocaine",
     "title": "Sellou Ã  la marocaine",
-    "titleAr": "Sellou Ã  la marocaine",
+    "titleAr": "سلو مغربي",
     "description": "TorrÃ©fiez la farine au four en la surveillant rÃ©guliÃ¨rement ou bien dans une grande poÃªle antiadhÃ©sive chaude. Quelle que soit la technique, remu...",
-    "descriptionAr": "وصفة Sellou Ã  la marocaine",
+    "descriptionAr": "وصفة سلو مغربي",
     "category": "Dessert",
     "categoryAr": "حلوى",
     "prepTime": "30 minutes",
@@ -204,14 +334,37 @@
       "Dressez le Sellou Ã  la marocaine en formant une pyramide dans une belle assiette.",
       "Saupoudrez avec le sucre glace Ã  l'aide d'une passoire et dÃ©corez en dessinant sur 4 cÃ´tÃ©s des lignes en partant du bas vers le sommet avec les amandes entiÃ¨res."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "دقيق (500 غ)",
+      "لوز مقشر (500 غ)",
+      "سمسم (500 غ)",
+      "زبدة ذائبة (500 غ)",
+      "عسل سائل (250 غ)",
+      "يانسون (نافع)",
+      "قرفة",
+      "جوزة الطيب",
+      "مسكة حرة",
+      "لوز محمص",
+      "سكر ناعم"
+    ],
+    "instructionsAr": [
+      "حمصي الدقيق في الفرن أو المقلاة حتى يصبح لونه بنياً ذهبيًا",
+      "غربليه",
+      "حمصي السمسم واللوز المقشر",
+      "اطحني المكونات المحمصة مع جوزة الطيب واليانسون والقرفة والمسكة الحرة",
+      "ضعي الدقيق المحمص في طبق كبير (قصعة)",
+      "أضيفي الفواكه الجافة والمكونات المطحونة واخلطي",
+      "أضيفي الزبدة المذابة والعسل تدريجياً مع العجن باليد",
+      "شكلي السلو على شكل هرم وزينيه بالسكر الناعم واللوز."
+    ]
   },
   {
     "id": "couscous-marocain",
     "title": "Couscous Marocain",
-    "titleAr": "Couscous Marocain",
+    "titleAr": "كسكس مغربي",
     "description": "Dans une cocotte-minute, dÃ©posez les morceaux de gigot dâagneau, lâoignon Ã©mincÃ© et les tomates mixÃ©es. Ajoutez lâhuile dâolive et les Ã©p...",
-    "descriptionAr": "وصفة Couscous Marocain",
+    "descriptionAr": "وصفة كسكس مغربي",
     "category": "Main Course",
     "categoryAr": "طبق رئيسي",
     "prepTime": "15 minutes",
@@ -244,14 +397,49 @@
       "Dans un couscoussier, faites chauffer de lâeau. Disposez la semoule dans la partie supÃ©rieure et faites cuire pendant 20 min. Renouvelez lâopÃ©ration (eau et cuisson Ã  la vapeur).",
       "Servez votre couscous marocain bien chaud, avec les lÃ©gumes prÃ©sentÃ©s Ã  part."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "جزر (500 غ)",
+      "طماطم (2)",
+      "بصل (1)",
+      "لفت (500 غ)",
+      "قرع (250 غ)",
+      "كوسة (2)",
+      "حمص (250 غ)",
+      "كسكس ناعم (500 غ)",
+      "فخذ خروف (500 غ)",
+      "قزبر طازج (نصف باقة)",
+      "زنجبيل (نصف ملعقة صغيرة)",
+      "رأس الحانوت (ملعقة صغيرة)",
+      "كركم (ملعقة صغيرة)",
+      "زيت زيتون (4 ملاعق كبيرة)",
+      "ملح وفلفل"
+    ],
+    "instructionsAr": [
+      "في قدر الضغط، ضعي قطع فخذ الخروف والبصل المفروم والطماطم المخلوطة",
+      "أضيفي زيت الزيتون والتوابل",
+      "اسكبي كأس صغير من الماء",
+      "اتركيه يطهى على نار هادئة لمدة 10 دقائق مع التحريك المنتظم بملعقة خشبية",
+      "أضيفي بعدها الحمص المصفى وغطي الكل بالماء",
+      "اطهي مغطى لمدة 15 دقيقة تقريباً على نار هادئة",
+      "في هذه الأثناء، قشري جميع الخضروات (اللفت والقرع والكوسة) وقطعيها إلى قطع متوسطة الحجم",
+      "اغسلي القزبر وجففيه جيداً واربطيه",
+      "بعد 15 دقيقة من الطهي، أضيفي قطع الجزر واللفت وباقة القزبر",
+      "اتركيه يطهى مرة أخرى لمدة 15 دقيقة مع مراقبة مستوى الماء: أضيفي المزيد إذا لزم الأمر حتى يغطي دائماً الخضروات واللحم بالكامل",
+      "في وعاء، ضعي سميد الكسكس، أضيفي إليه الماء الفاتر تدريجياً مع العمل عليه باليد حتى ينتفخ قليلاً وبشكل متجانس",
+      "ملحيه حسب الرغبة",
+      "في قدر الكسكس، سخني الماء",
+      "ضعي السميد في الجزء العلوي واطهيه لمدة 20 دقيقة",
+      "كرري العملية (الماء والطهي بالبخار)",
+      "قدمي الكسكس المغربي ساخناً مع الخضروات المقدمة بشكل منفصل."
+    ]
   },
   {
     "id": "cr-pe-marocaine-msemen",
     "title": "crÃªpe marocaine msemen",
-    "titleAr": "crÃªpe marocaine msemen",
+    "titleAr": "مسمن مغربي (رغايف)",
     "description": "Le msemen marocain est une galette arabe particuliÃ¨rement appÃ©tissanteÂ ! MiamÂ !...",
-    "descriptionAr": "وصفة crÃªpe marocaine msemen",
+    "descriptionAr": "وصفة مسمن مغربي (رغايف)",
     "category": "Dessert",
     "categoryAr": "حلوى",
     "prepTime": "25 minutes",
@@ -279,7 +467,24 @@
       "AstuceÂ : vous pouvez en prÃ©parer en quantitÃ©, le msemen farci se conserve trÃ¨s facilement au rÃ©frigÃ©rateur dans du papier aluminiumÂ !",
       "Cette recette accompagnera toute la pÃ©riode du RamadanÂ ! Miam !"
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "سميد ناعم (300 غ)",
+      "دقيق (500 غ)",
+      "ملح ناعم (ملعقة صغيرة)",
+      "ماء فاتر (500 مل)",
+      "زيت محايد (300 مل)"
+    ],
+    "instructionsAr": [
+      "في وعاء كبير، اخلطي السميد الناعم والدقيق والملح",
+      "أضيفي الماء الفاتر تدريجياً مع العجن حتى تحصلي على عجينة ملساء ومرنة",
+      "اتركي العجينة ترتاح لمدة 30 دقيقة",
+      "شكلي كرات صغيرة من العجينة وادهنيها بالزيت",
+      "ابسطي كل كرة بيديك حتى تصبح رقيقة جداً",
+      "اطوي الأطراف نحو المركز لتشكيل مربع",
+      "اقلي المسمن في مقلاة ساخنة حتى يصبح ذهبياً من الجانبين",
+      "قدميه ساخناً مع العسل أو المربى."
+    ]
   },
   {
     "id": "tajine-de-poisson-la-marocaine",
@@ -5031,9 +5236,9 @@
   {
     "id": "couscous-au-poulet",
     "title": "Couscous au poulet",
-    "titleAr": "Couscous au poulet",
+    "titleAr": "كسكس بالدجاج",
     "description": "Versez dans le bas d'un couscoussier 50 ml d'eau. Mettez la tomate concentrÃ©e, le sel, le poivre et l'huile d'olive. MÃ©langez tout et laissez bouill...",
-    "descriptionAr": "وصفة Couscous au poulet",
+    "descriptionAr": "وصفة كسكس بالدجاج",
     "category": "Main Course",
     "categoryAr": "طبق رئيسي",
     "prepTime": "30 minutes",
@@ -5064,7 +5269,32 @@
       "Pendant ce temps, versez 1 verre d'eau dans les 250 g de couscous et laissez-le reposer 3 min. Versez le couscous dans le haut du couscoussier, placez-le au-dessus des lÃ©gumes et de la viande et laissez-le cuire Ã  la vapeur 10 min. Une fois la cuisson terminÃ©e, Ã©grenez bien les graines Ã  l'aide de vos doigts ou d'une fourchette.",
       "Prenez un plat de service,  disposez votre couscous avec un peu de sauce puis placez au-dessus votre poulet et vos lÃ©gumes."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "دجاج (1 كامل)",
+      "كسكس (500 غ)",
+      "حمص (كوب)",
+      "جزر (4)",
+      "كوسة (3)",
+      "لفت (2)",
+      "طماطم (3)",
+      "بصل (2)",
+      "رأس الحانوت",
+      "كركم",
+      "زيت زيتون",
+      "ملح وفلفل",
+      "قزبر ومعدنوس"
+    ],
+    "instructionsAr": [
+      "قطعي الدجاج إلى قطع",
+      "في قدر الكسكس، حمري الدجاج مع البصل المفروم في زيت الزيتون",
+      "أضيفي الطماطم المقطعة والتوابل والحمص المنقوع",
+      "غطي بالماء واطهي لمدة 30 دقيقة",
+      "قشري وقطعي الخضروات وأضيفيها",
+      "اطهي لمدة 30 دقيقة إضافية",
+      "حضري السميد بالبخار في الجزء العلوي من القدر",
+      "قدمي الكسكس مع اللحم والخضروات والمرق."
+    ]
   },
   {
     "id": "faisselles-saveurs-marocaines",
@@ -5242,9 +5472,9 @@
   {
     "id": "hamburger-v-g-tal-la-sauce-marocaine",
     "title": "Hamburger vÃ©gÃ©tal Ã  la sauce marocaine",
-    "titleAr": "Hamburger vÃ©gÃ©tal Ã  la sauce marocaine",
+    "titleAr": "برغر نباتي بالصلصة المغربية",
     "description": "Allumez le four sur 60Â° C....",
-    "descriptionAr": "وصفة Hamburger vÃ©gÃ©tal Ã  la sauce marocaine",
+    "descriptionAr": "وصفة برغر نباتي بالصلصة المغربية",
     "category": "Main Course",
     "categoryAr": "طبق رئيسي",
     "prepTime": "30 minutes",
@@ -5283,6 +5513,36 @@
       "Poivrer le steak en fin de cuisson, et ajoutez du thym.",
       "Couper dÃ©licatement le pain en deux avec un couteau Ã  pain, ajouter le steak et les piments, puis la mÃ¢che avec un peu de sel par dessus et fermer le hamburger."
     ],
-    "source": "cuisineaz.com"
+    "source": "cuisineaz.com",
+    "ingredientsAr": [
+      "طماطم (400 غ)",
+      "بذور سمسم (20 غ)",
+      "أرز بري (30 غ)",
+      "كوسة (1)",
+      "بذور القرع (25 غ)",
+      "صنوبر (10 غ)",
+      "زبيب (10 غ)",
+      "بصل أحمر (1)",
+      "فلفل حار",
+      "رأس الحانوت (ملعقة صغيرة)",
+      "كركم (نصف ملعقة صغيرة)",
+      "قرفة (ربع ملعقة صغيرة)"
+    ],
+    "instructionsAr": [
+      "شغلي الفرن على 60 درجة",
+      "اطهي الأرز البري",
+      "اطحني البذور والأرز المطبوخ",
+      "انتظري 10 دقائق ثم شكلي العجينة على شكل خبز برغر كبير بما يكفي لاستيعاب قطعة اللحم وسميك بما يكفي ليتم قطعه إلى نصفين",
+      "اخبزيه في الفرن على ورق خبز مباشرة على الشبكة لمدة 30 دقيقة، اقلبيه بعد 25 دقيقة",
+      "اغسلي الطماطم وانزعي البذور وقطعيها إلى مكعبات صغيرة أو اخلطيها بشكل خشن ثم ضعيها في قدر على نار هادئة، أضيفي جميع التوابل مباشرة",
+      "اطحني الصنوبر والزبيب وأضيفيهم إلى الصلصة ثم حركي واتركيها تسخن ببطء",
+      "ابشري الكوسة وصفيها جيداً ثم اخلطيها مع البروتين الذي اخترتيه",
+      "في هذه المرحلة يمكنك إضافة التوابل",
+      "شكلي العجينة على شكل قطعة لحم مضغوطة بحد أقصى 1.5 سم وضعيها في الفرن على ورق زبدة",
+      "لفي الخبز في ورق ألومنيوم عند إخراجه من الفرن واتركيه يبرد قليلاً بداخله",
+      "عندما يخرج الخبز من الفرن، ارفعي الحرارة إلى 100 درجة واقلبي قطعة اللحم على ورق خبز آخر إذا كان الجانب الخارجي مطبوخاً بالفعل، وإلا انتظري قليلاً",
+      "فلفلي قطعة اللحم في نهاية الطهي، وأضيفي الزعتر",
+      "اقطعي الخبز بعناية إلى نصفين بسكين الخبز، أضيفي قطعة اللحم والفلفل الحار، ثم الجرجير مع القليل من الملح فوقه وأغلقي البرغر."
+    ]
   }
 ]

@@ -23,8 +23,8 @@ export default function AboutPage() {
           <div className="relative mb-12 rounded-3xl overflow-hidden shadow-2xl"
           >
             <img
-              src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=1200&q=80"
-              alt="توابل مغربية"
+              src="https://images.unsplash.com/photo-1583394293214-28ez8ac94e4a?w=1200&q=80"
+              alt="شيف مغربية"
               className="w-full h-64 md:h-96 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-sand-light dark:from-charcoal via-transparent to-transparent" />

@@ -257,12 +257,16 @@ img {
   display: none;
 }
 
-/* Dark mode specific utilities */
+/* Dark mode specific utilities - Enhanced for better contrast */
 .dark .bg-white {
-  background-color: #242424;
+  background-color: #1e1e1e;
 }
 
 .dark .bg-sand-light {
+  background-color: #121212;
+}
+
+.dark .bg-charcoal-light {
   background-color: #1a1a1a;
 }
 
@@ -270,12 +274,27 @@ img {
   color: #F2E8D5;
 }
 
+.dark .text-charcoal\/50,
+.dark .text-charcoal\/60,
+.dark .text-charcoal\/70,
+.dark .text-charcoal\/80 {
+  color: rgba(242, 232, 213, 0.9);
+}
+
 .dark .border-charcoal\/10 {
-  border-color: rgba(242, 232, 213, 0.1);
+  border-color: rgba(242, 232, 213, 0.2);
 }
 
 .dark .shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+}
+
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
 }
 
 /* RTL specific utilities */
@@ -300,7 +319,67 @@ img {
   font-weight: 600;
 }
 
-/* Input placeholders in Arabic */
-::placeholder {
-  font-family: var(--font-arabic);
+/* Dark mode - Additional enhancements */
+.dark body {
+  background-color: #121212;
+  color: #F2E8D5;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.dark .bg-charcoal {
+  background-color: #0d0d0d;
+}
+
+.dark .bg-white\/95 {
+  background-color: rgba(30, 30, 30, 0.95);
+}
+
+.dark .bg-charcoal\/95 {
+  background-color: rgba(13, 13, 13, 0.95);
+}
+
+.dark .bg-charcoal\/80 {
+  background-color: rgba(13, 13, 13, 0.8);
+}
+
+.dark .hover\:bg-sand\/50:hover {
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
+.dark .hover\:bg-charcoal\/50:hover {
+  background-color: rgba(26, 26, 26, 0.5);
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1a1a1a;
+  color: #F2E8D5;
+  border-color: #333;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(242, 232, 213, 0.5);
+}
+
+.dark .ingredient-item {
+  color: rgba(242, 232, 213, 0.9);
+}
+
+.dark .ingredient-item::before {
+  color: #F2CC8F;
+}
+
+.dark .btn-primary {
+  background: linear-gradient(135deg, #E07A5F, #F2CC8F);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(242, 204, 143, 0.3);
+}
+
+.dark .btn-primary:hover {
+  box-shadow: 0 8px 25px rgba(242, 204, 143, 0.4);
 }

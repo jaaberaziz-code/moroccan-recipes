@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,32 +11,33 @@ module.exports = {
       colors: {
         // Morocco-inspired palette
         terracotta: {
-          DEFAULT: '#C65D3B',
-          light: '#D97B5D',
-          dark: '#A34A2E',
+          DEFAULT: '#E07A5F',
+          light: '#F4A896',
+          dark: '#C65A45',
         },
         majorelle: {
-          DEFAULT: '#1E5AA8',
-          light: '#4A7FC4',
-          dark: '#0F3D7A',
+          DEFAULT: '#3D5A80',
+          light: '#5E7A9E',
+          dark: '#2A3F5C',
         },
         saffron: {
-          DEFAULT: '#F4C430',
-          light: '#F9D76A',
-          dark: '#D4A820',
+          DEFAULT: '#F2CC8F',
+          light: '#F5DDB3',
+          dark: '#D9A85C',
         },
         sand: {
-          DEFAULT: '#E8DCC4',
-          light: '#F5F0E6',
+          DEFAULT: '#F2E8D5',
+          light: '#F7F1E6',
           dark: '#C9B896',
         },
         charcoal: {
           DEFAULT: '#2C2C2C',
-          light: '#4A4A4A',
+          light: '#3D3D3D',
           dark: '#1A1A1A',
         },
       },
       fontFamily: {
+        arabic: ['Noto Sans Arabic', 'Tajawal', 'system-ui', 'sans-serif'],
         serif: ['Playfair Display', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
@@ -55,7 +57,7 @@ module.exports = {
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+        '50%': { transform: 'translateY(-10px)' },
         },
       },
     },
