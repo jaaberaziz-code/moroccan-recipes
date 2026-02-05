@@ -1,5 +1,6 @@
 import './globals.css';
 import { Playfair_Display, Noto_Sans_Arabic } from 'next/font/google';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -61,7 +62,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans touch-manipulation">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

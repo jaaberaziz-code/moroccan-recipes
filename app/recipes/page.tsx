@@ -32,7 +32,7 @@ export default function RecipesPage() {
   }, [recipes, selectedCategory, searchQuery]);
 
   return (
-    <main className="min-h-screen bg-sand-light pt-20">
+    <main className="min-h-screen bg-sand-light dark:bg-charcoal pt-20 transition-colors">
       <Navigation />
       
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -40,10 +40,10 @@ export default function RecipesPage() {
           <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">
             All Recipes
           </p>
-          <h1 className="font-editorial text-4xl md:text-6xl font-semibold text-charcoal mb-4">
+          <h1 className="font-editorial text-4xl md:text-6xl font-semibold text-charcoal dark:text-sand mb-4">
             The Complete Collection
           </h1>
-          <p className="font-editorial text-xl md:text-2xl text-charcoal/60" dir="rtl">
+          <p className="font-editorial text-xl md:text-2xl text-charcoal/60 dark:text-sand/60" dir="rtl">
             مجموعة الوصفات الكاملة
           </p>
         </div>
@@ -56,10 +56,10 @@ export default function RecipesPage() {
               placeholder="Search recipes... | ابحث عن وصفة..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-4 pl-14 bg-white border-2 border-morocco-sand rounded-full text-charcoal placeholder:text-charcoal/40 focus:outline-none focus:border-majorelle transition-colors"
+              className="w-full px-6 py-4 pl-14 bg-white dark:bg-charcoal-light border-2 border-morocco-sand dark:border-charcoal rounded-full text-charcoal dark:text-sand placeholder:text-charcoal/40 dark:placeholder:text-sand/40 focus:outline-none focus:border-majorelle transition-colors"
             />
             <svg
-              className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-charcoal/40"
+              className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-charcoal/40 dark:text-sand/40"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -83,7 +83,7 @@ export default function RecipesPage() {
               className={`px-6 py-3 rounded-full border-2 transition-all duration-300 ${
                 selectedCategory === cat.id
                   ? 'bg-majorelle text-white border-majorelle'
-                  : 'bg-white text-charcoal border-morocco-sand hover:border-majorelle'
+                  : 'bg-white dark:bg-charcoal-light text-charcoal dark:text-sand border-morocco-sand dark:border-charcoal hover:border-majorelle'
               }`}
             >
               <span className="font-medium">{cat.label}</span>
@@ -94,7 +94,7 @@ export default function RecipesPage() {
         </div>
 
         {/* Results Count */}
-        <p className="text-center text-charcoal/60 mb-8">
+        <p className="text-center text-charcoal/60 dark:text-sand/60 mb-8">
           {filteredRecipes.length} recipe{filteredRecipes.length !== 1 ? 's' : ''} found
         </p>
 
@@ -107,13 +107,13 @@ export default function RecipesPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-2xl text-charcoal/60 font-editorial mb-2">No recipes found</p>
-            <p className="text-charcoal/40" dir="rtl">لم يتم العثور على وصفات</p>
+            <p className="text-2xl text-charcoal/60 dark:text-sand/60 font-editorial mb-2">No recipes found</p>
+            <p className="text-charcoal/40 dark:text-sand/40" dir="rtl">لم يتم العثور على وصفات</p>
           </div>
         )}
       </section>
 
-      <footer className="bg-charcoal text-white/60 py-12">
+      <footer className="bg-charcoal dark:bg-black text-white/60 py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p>© 2026 Chaimae's Moroccan Recipes</p>
         </div>

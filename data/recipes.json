@@ -1,87 +1,5 @@
 [
   {
-    "id": "makrout-sans-datte",
-    "title": "Makrout sans datte",
-    "titleAr": "Makrout sans datte",
-    "description": "",
-    "descriptionAr": "وصفة Makrout sans datte",
-    "category": "Main Course",
-    "categoryAr": "طبق رئيسي",
-    "prepTime": "20 minutes",
-    "cookTime": "40 minutes",
-    "servings": 4,
-    "difficulty": "Medium",
-    "image": "https://img.cuisineaz.com/660x660/2022/02/18/i182979-makrout-sans-datte.jpeg",
-    "ingredients": [
-      "Semoule moyenne (200 g)",
-      "Farine (200 g)",
-      "Sucre glace (0,5 c. à soupe)",
-      "Sucre vanillé (0,5 sachet(s))",
-      "Sel (0,5 c. à café)",
-      "Margarine (100 g)",
-      "Eau de fleur d'oranger (100 g)",
-      "Cannelle (0,5 c. à café)",
-      "Huile de friture ( )",
-      "Miel (1 pot(s))",
-      "Eau de fleur d'oranger (2 c. à soupe)"
-    ],
-    "instructions": [],
-    "source": "cuisineaz.com"
-  },
-  {
-    "id": "marinade-a-la-marocaine",
-    "title": "Marinade à la marocaine",
-    "titleAr": "Marinade à la marocaine",
-    "description": "Mélangez ensemble tous les ingrédients dans le blender jusqu'à obtention d'un mélange bien homogène.",
-    "descriptionAr": "وصفة Marinade à la marocaine",
-    "category": "Main Course",
-    "categoryAr": "طبق رئيسي",
-    "prepTime": "15 minutes",
-    "cookTime": "30 minutes",
-    "servings": 4,
-    "difficulty": "Medium",
-    "image": "https://img.cuisineaz.com/660x660/2016/04/28/i6326-marinade-a-la-marocaine.jpg",
-    "ingredients": [
-      "Huile d'olive (20 cl)",
-      "Ras el-hanout (4 c. à café)",
-      "Gingembre en poudre (1 c. à café)",
-      "Sel (2 l)",
-      "Ail (6 )",
-      "Coriandre ciselée (1 bouquet(s))"
-    ],
-    "instructions": [
-      "Mélangez ensemble tous les ingrédients dans le blender  jusqu'à obtention d'un mélange bien homogène."
-    ],
-    "source": "cuisineaz.com"
-  },
-  {
-    "id": "poulet-a-la-marocaine-en-papillote",
-    "title": "Poulet à la Marocaine en papillote",
-    "titleAr": "Poulet à la Marocaine en papillote",
-    "description": "Préchauffez le four à 200°. Pelez les légumes et l'oignon. Coupez la carotte en rondelles, l'oignon en 8 quartiers et le reste des légumes en morceaux...",
-    "descriptionAr": "وصفة Poulet à la Marocaine en papillote",
-    "category": "Main Course",
-    "categoryAr": "طبق رئيسي",
-    "prepTime": "25 minutes",
-    "cookTime": "45 minutes",
-    "servings": 4,
-    "difficulty": "Medium",
-    "image": "https://img.cuisineaz.com/660x660/2013/12/20/i101252-poulet-a-la-marocaine.jpg",
-    "ingredients": [
-      "Fondant (1 sachet(s))",
-      "Cuisses de poulet (4 )",
-      "Pomme(s) de terre (250 g)",
-      "Courgette(s) (200 g)",
-      "Courgette jaune (1 )",
-      "Carotte(s) (1 )",
-      "Oignon(s) (1 )"
-    ],
-    "instructions": [
-      "Préchauffez le four à 200°. Pelez les légumes et l'oignon. Coupez la carotte en rondelles, l'oignon en 8 quartiers et le reste des légumes en morceaux de 2,5-3cm. Dépliez le sachet. Déposez la viande et les légumes dans le sachet. Versez le mélange à la Marocaine. Fermez le sachet avec l'attache prévue à cet effet. Secouez-le doucement pour bien enrober tous les aliments. Posez le sachet dans un plat à four de manière à ce que le poulet s'étale en une seule couche. Percez 3 à 4 trous à la surface du sachet avec un couteau. Faites cuire 50 min. Laissez reposer 5 min, puis enlever l'attache avec précaution. Videz le sachet délicatement dans un plat de service, en l'attrapant par les coins. Attention à ne pas vous brûler avec la vapeur lors de l'ouverture du sachet."
-    ],
-    "source": "cuisineaz.com"
-  },
-  {
     "id": "harira-choumicha",
     "title": "Harira Choumicha",
     "titleAr": "Harira Choumicha",
@@ -4737,32 +4655,6 @@
     "source": "cuisineaz.com"
   },
   {
-    "id": "marinade-la-marocaine",
-    "title": "Marinade Ã  la marocaine",
-    "titleAr": "Marinade Ã  la marocaine",
-    "description": "MÃ©langez ensemble tous les ingrÃ©dients dans le blender  jusqu'Ã  obtention d'un mÃ©lange bien homogÃ¨ne....",
-    "descriptionAr": "وصفة Marinade Ã  la marocaine",
-    "category": "Main Course",
-    "categoryAr": "طبق رئيسي",
-    "prepTime": "15 minutes",
-    "cookTime": "30 minutes",
-    "servings": 4,
-    "difficulty": "Medium",
-    "image": "https://img.cuisineaz.com/660x660/2016/04/28/i6326-marinade-a-la-marocaine.jpg",
-    "ingredients": [
-      "Huile d'olive (20 cl)",
-      "Ras el-hanout (4 c. Ã  cafÃ©)",
-      "Gingembre en poudre (1 c. Ã  cafÃ©)",
-      "Sel (2 l)",
-      "Ail (6 )",
-      "Coriandre ciselÃ©e (1 bouquet(s))"
-    ],
-    "instructions": [
-      "MÃ©langez ensemble tous les ingrÃ©dients dans le blender  jusqu'Ã  obtention d'un mÃ©lange bien homogÃ¨ne."
-    ],
-    "source": "cuisineaz.com"
-  },
-  {
     "id": "courge-butternut-la-marocaine",
     "title": "Courge butternut Ã  la marocaine",
     "titleAr": "Courge butternut Ã  la marocaine",
@@ -5312,33 +5204,6 @@
       "MÃ©langez le tout avec la coriandre, le jus de citron vert et le cumin.",
       "Ajoutez l'huile d'olive et la sauce piquante et incorporez le thon Ã©miettÃ©.",
       "Laissez mariner pendant 1 heure."
-    ],
-    "source": "cuisineaz.com"
-  },
-  {
-    "id": "poulet-la-marocaine-en-papillote",
-    "title": "Poulet Ã  la Marocaine en papillote",
-    "titleAr": "Poulet Ã  la Marocaine en papillote",
-    "description": "PrÃ©chauffez le four Ã  200Â°. Pelez les lÃ©gumes et l'oignon. Coupez la carotte en rondelles, l'oignon en 8 quartiers et le reste des lÃ©gumes en mor...",
-    "descriptionAr": "وصفة Poulet Ã  la Marocaine en papillote",
-    "category": "Main Course",
-    "categoryAr": "طبق رئيسي",
-    "prepTime": "25 minutes",
-    "cookTime": "45 minutes",
-    "servings": 4,
-    "difficulty": "Medium",
-    "image": "https://img.cuisineaz.com/660x660/2013/12/20/i101252-poulet-a-la-marocaine.jpg",
-    "ingredients": [
-      "Fondant (1 sachet(s))",
-      "Cuisses de poulet (4 )",
-      "Pomme(s) de terre (250 g)",
-      "Courgette(s) (200 g)",
-      "Courgette jaune (1 )",
-      "Carotte(s) (1 )",
-      "Oignon(s) (1 )"
-    ],
-    "instructions": [
-      "PrÃ©chauffez le four Ã  200Â°. Pelez les lÃ©gumes et l'oignon. Coupez la carotte en rondelles, l'oignon en 8 quartiers et le reste des lÃ©gumes en morceaux de 2,5-3cm. DÃ©pliez le sachet. DÃ©posez la viande et les lÃ©gumes dans le sachet. Versez le mÃ©lange Ã  la Marocaine. Fermez le sachet avec l'attache prÃ©vue Ã  cet effet. Secouez-le doucement pour bien enrober tous les aliments. Posez le sachet dans un plat Ã  four de maniÃ¨re Ã  ce que le poulet s'Ã©tale en une seule couche. Percez 3 Ã  4 trous Ã  la surface du sachet avec un couteau. Faites cuire 50 min. Laissez reposer 5 min, puis enlever l'attache avec prÃ©caution. Videz le sachet dÃ©licatement dans un plat de service, en l'attrapant par les coins. Attention Ã  ne pas vous brÃ»ler avec la vapeur lors de l'ouverture du sachet."
     ],
     "source": "cuisineaz.com"
   },

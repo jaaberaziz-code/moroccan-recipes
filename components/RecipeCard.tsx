@@ -1,7 +1,7 @@
 'use client';
 
 import { Recipe } from '@/lib/recipes';
-import { Clock, Users, ChefHat, ArrowRight, Flame } from 'lucide-react';
+import { Clock, ChefHat, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface RecipeCardProps {
@@ -15,7 +15,7 @@ export function RecipeCard({ recipe, featured = false }: RecipeCardProps) {
     return (
       <Link
         href={`/recipe/${recipe.id}`}
-        className="group block relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500"
+        className="group block relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal-light shadow-xl hover:shadow-2xl transition-all duration-500"
       >
         <div className="relative aspect-[16/10] overflow-hidden">
           <img
@@ -26,8 +26,7 @@ export function RecipeCard({ recipe, featured = false }: RecipeCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
           <div className="absolute top-4 left-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-terracotta text-white text-xs font-semibold rounded-full">
-              <Flame size={14} />
+            <span className="px-4 py-2 bg-terracotta text-white text-xs font-semibold rounded-full">
               {recipe.category}
             </span>
           </div>
@@ -45,10 +44,6 @@ export function RecipeCard({ recipe, featured = false }: RecipeCardProps) {
                 <Clock size={16} />
                 {recipe.cookTime}
               </span>
-              <span className="flex items-center gap-2">
-                <Users size={16} />
-                {recipe.servings} people
-              </span>
               <span className="flex items-center gap-1 text-saffron group-hover:translate-x-1 transition-transform">
                 View Recipe
                 <ArrowRight size={16} />
@@ -63,7 +58,7 @@ export function RecipeCard({ recipe, featured = false }: RecipeCardProps) {
   return (
     <Link
       href={`/recipe/${recipe.id}`}
-      className="group block relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      className="group block relative overflow-hidden rounded-2xl bg-white dark:bg-charcoal-light shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
@@ -74,7 +69,7 @@ export function RecipeCard({ recipe, featured = false }: RecipeCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         
         <div className="absolute top-3 left-3">
-          <span className="px-3 py-1.5 bg-white/95 backdrop-blur-sm text-charcoal text-xs font-semibold rounded-full">
+          <span className="px-3 py-1.5 bg-white/95 dark:bg-charcoal/95 backdrop-blur-sm text-charcoal dark:text-sand text-xs font-semibold rounded-full">
             {recipe.category}
           </span>
         </div>

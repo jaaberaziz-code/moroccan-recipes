@@ -4,7 +4,7 @@ import { RecipeCard } from '@/components/RecipeCard';
 import { Navigation } from '@/components/Navigation';
 import { Logo } from '@/components/Logo';
 import { getAllRecipes } from '@/lib/recipes';
-import { ArrowRight, Sparkles, Utensils, Clock } from 'lucide-react';
+import { ArrowRight, Heart, BookOpen, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -12,145 +12,155 @@ export default function Home() {
   const featuredRecipe = recipes[0];
   const otherRecipes = recipes.slice(1, 7);
 
-  const stats = [
-    { icon: Utensils, value: recipes.length, label: 'Recipes', labelAr: 'وصفة' },
-    { icon: Clock, value: '15-60', label: 'Minutes', labelAr: 'دقيقة' },
-    { icon: Sparkles, value: '100%', label: 'Authentic', labelAr: 'أصيلة' },
-  ];
-
   return (
-    <main className="min-h-screen bg-sand-light">
+    <main className="min-h-screen bg-sand-light dark:bg-charcoal transition-colors">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 opacity-10 dark:opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E07A5F' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="text-center lg:text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-terracotta/10 text-terracotta text-sm font-medium mb-6">
-                <Sparkles size={16} />
-                <span>Version 2.0 is here!</span>
-              </div>
-
-              <div className="flex justify-center lg:justify-start mb-6">
-                <Logo size="lg" />
-              </div>
-
-              <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal leading-tight mb-6">
-                Taste the Magic of
-                <span className="block bg-gradient-to-r from-terracotta via-saffron to-majorelle bg-clip-text text-transparent">
-                  Morocco
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-charcoal/70 mb-8 max-w-xl mx-auto lg:mx-0" dir="rtl">
-                اكتشف أسرار المطبخ المغربي الأصيل مع وصفات شيماء
-              </p>
-
-              <p className="text-charcoal/60 mb-8 max-w-lg mx-auto lg:mx-0">
-                Discover {recipes.length}+ authentic Moroccan recipes with beautiful photos. 
-                From traditional Tagine to sweet Pastilla.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link
-                  href="/recipes"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta/90 transition-all shadow-lg shadow-terracotta/25 hover:shadow-xl hover:shadow-terracotta/30 hover:-translate-y-0.5"
-                >
-                  Explore Recipes
-                  <ArrowRight size={20} />
-                </Link>
-
-                <a
-                  href="#featured"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-charcoal rounded-full font-medium border-2 border-charcoal/10 hover:border-majorelle hover:text-majorelle transition-all"
-                >
-                  Today's Pick
-                </a>
-              </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center max-w-3xl mx-auto animate-fade-in-up">
+            <div className="flex justify-center mb-8">
+              <Logo size="lg" />
             </div>
 
-            {/* Right Content - Featured Image */}
-            <div className="relative hidden lg:block animate-fade-in-up">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-terracotta/20 via-saffron/20 to-majorelle/20 rounded-3xl blur-2xl" />
-                <img
-                  src={featuredRecipe.image}
-                  alt={featuredRecipe.title}
-                  className="relative rounded-3xl shadow-2xl aspect-[4/5] object-cover"
-                />
+            <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal dark:text-sand leading-tight mb-6">
+              Taste the Magic of
+              <span className="block bg-gradient-to-r from-terracotta via-saffron to-majorelle bg-clip-text text-transparent">
+                Morocco
+              </span>
+            </h1>
 
-                {/* Floating Card */}
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl">
-                  <p className="text-xs text-charcoal/50 uppercase tracking-wide mb-1">Featured Recipe</p>
-                  <p className="font-editorial text-lg font-semibold text-charcoal max-w-[200px]">
-                    {featuredRecipe.title}
-                  </p>
-                  <div className="flex items-center gap-2 mt-2 text-sm text-charcoal/60">
-                    <Clock size={14} />
-                    <span>{featuredRecipe.cookTime}</span>
-                  </div>
-                </div>
-              </div>
+            <p className="text-xl md:text-2xl text-charcoal/70 dark:text-sand/70 mb-4" dir="rtl">
+              اكتشف أسرار المطبخ المغربي الأصيل
+            </p>
+
+            <p className="text-charcoal/60 dark:text-sand/60 mb-10 max-w-lg mx-auto">
+              {recipes.length}+ authentic Moroccan recipes with beautiful photos from traditional Tagine to sweet Pastilla.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/recipes"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta/90 transition-all shadow-lg shadow-terracotta/25"
+              >
+                Explore Recipes
+                <ArrowRight size={20} />
+              </Link>
+
+              <a
+                href="#story"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-charcoal text-charcoal dark:text-sand rounded-full font-medium border-2 border-charcoal/10 dark:border-sand/10 hover:border-terracotta transition-all"
+              >
+                Our Story
+              </a>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="mt-16 md:mt-24 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center animate-fade-in-up">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white shadow-lg mb-4">
-                  <stat.icon className="text-terracotta" size={24} />
+          {/* Featured Image */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <Link href={`/recipe/${featuredRecipe.id}`} className="block group">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src={featuredRecipe.image}
+                  alt={featuredRecipe.title}
+                  className="w-full aspect-[21/9] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p className="text-white/70 text-sm uppercase tracking-wider mb-2">Featured Recipe</p>
+                  <h3 className="font-editorial text-2xl md:text-3xl font-bold text-white mb-2">
+                    {featuredRecipe.title}
+                  </h3>
+                  <div className="flex items-center gap-4 text-white/80 text-sm">
+                    <span>{featuredRecipe.cookTime}</span>
+                    <span>•</span>
+                    <span>{featuredRecipe.servings} people</span>
+                  </div>
                 </div>
-                <p className="font-editorial text-2xl md:text-3xl font-bold text-charcoal">
-                  {stat.value}
-                </p>
-                <p className="text-sm text-charcoal/60">{stat.label}</p>
-                <p className="text-xs text-charcoal/40" dir="rtl">{stat.labelAr}</p>
               </div>
-            ))}
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Featured Recipe Section */}
-      <section id="featured" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">
-            Featured Recipe
-          </p>
-          <h2 className="font-editorial text-4xl md:text-5xl font-bold text-charcoal">
-            This Week's Highlight
-          </h2>
-          <p className="text-charcoal/60 mt-4 max-w-xl mx-auto" dir="rtl">
-            وصفة مميزة من المطبخ المغربي
-          </p>
-        </div>
+      {/* Our Story Section */}
+      <section id="story" className="py-20 md:py-32 bg-white dark:bg-charcoal-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=800&q=80"
+                  alt="Moroccan spices and ingredients"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-terracotta rounded-2xl flex items-center justify-center shadow-xl">
+                <span className="text-white font-editorial text-4xl font-bold">142</span>
+              </div>
+            </div>
 
-        <div className="max-w-4xl mx-auto">
-          <RecipeCard recipe={featuredRecipe} index={0} featured={true} />
+            <div>
+              <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">Our Story</p>
+              
+              <h2 className="font-editorial text-4xl md:text-5xl font-bold text-charcoal dark:text-sand mb-6">
+                From Morocco with Love
+              </h2>
+
+              <p className="text-charcoal/70 dark:text-sand/70 text-lg mb-6 leading-relaxed">
+                Chaimae's Moroccan Recipes brings you authentic flavors from the heart of Morocco. 
+                Our collection features traditional dishes passed down through generations, 
+                from fragrant tagines to sweet pastries.
+              </p>
+
+              <p className="text-charcoal/70 dark:text-sand/70 mb-8 leading-relaxed" dir="rtl">
+                نقدم لكم وصفات مغربية أصيلة، من الطواجن العطرية إلى الحلويات التقليدية
+              </p>
+
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center">
+                    <Heart className="text-terracotta" size={24} />
+                  </div>
+                  <p className="text-sm text-charcoal/60 dark:text-sand/60">Made with Love</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center">
+                    <BookOpen className="text-majorelle" size={24} />
+                  </div>
+                  <p className="text-sm text-charcoal/60 dark:text-sand/60">142+ Recipes</p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center">
+                    <Globe className="text-saffron" size={24} />
+                  </div>
+                  <p className="text-sm text-charcoal/60 dark:text-sand/60">Authentic</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Recipe Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-sand-light dark:bg-charcoal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">
-              The Collection
-            </p>
-            <h2 className="font-editorial text-3xl md:text-4xl font-bold text-charcoal">
-              More Authentic Recipes
+            <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">The Collection</p>
+            <h2 className="font-editorial text-3xl md:text-4xl font-bold text-charcoal dark:text-sand">
+              Authentic Recipes
             </h2>
-            <p className="text-charcoal/60 mt-4 max-w-2xl mx-auto">
+            <p className="text-charcoal/60 dark:text-sand/60 mt-4 max-w-2xl mx-auto">
               Explore our curated selection of traditional Moroccan dishes with beautiful photos.
             </p>
           </div>
@@ -164,7 +174,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/recipes"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-charcoal text-white rounded-full font-medium hover:bg-charcoal/90 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-charcoal dark:bg-sand text-white dark:text-charcoal rounded-full font-medium hover:bg-charcoal/90 dark:hover:bg-sand/90 transition-all"
             >
               View All Recipes
               <ArrowRight size={20} />
@@ -174,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-charcoal text-white py-16">
+      <footer className="bg-charcoal dark:bg-black text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div className="text-center md:text-left">
