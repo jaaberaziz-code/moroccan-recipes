@@ -2,36 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
-
 :root {
-  --color-terracotta: #C65D3B;
-  --color-majorelle: #1E5AA8;
-  --color-saffron: #F4C430;
-  --color-sand: #E8DCC4;
+  --color-terracotta: #E07A5F;
+  --color-majorelle: #3D5A80;
+  --color-saffron: #F2CC8F;
+  --color-sand: #F2E8D5;
   --color-charcoal: #2C2C2C;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-arabic: 'Noto Sans Arabic', system-ui, sans-serif;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #F5F0E6;
+  font-family: var(--font-playfair), Georgia, serif;
+  background-color: #F2E8D5;
   color: #2C2C2C;
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px;
+  }
 }
 
 /* Editorial Typography */
 .font-editorial {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Arabic font */
+.font-arabic {
+  font-family: var(--font-arabic), system-ui, sans-serif;
 }
 
 /* Custom Scrollbar */
@@ -40,22 +56,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F0E6;
+  background: #F2E8D5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C65D3B;
+  background: #E07A5F;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #A34A2E;
+  background: #C65A45;
 }
 
 /* Text Selection */
 ::selection {
-  background: #F4C430;
-  color: #1A1A1A;
+  background: #F2CC8F;
+  color: #2C2C2C;
 }
 
 /* Gradient Overlays */
@@ -66,50 +82,6 @@ body {
     rgba(0, 0, 0, 0.4) 50%,
     rgba(0, 0, 0, 0.8) 100%
   );
-}
-
-/* Image Hover Effect */
-.image-hover {
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.image-hover:hover {
-  transform: scale(1.05);
-}
-
-/* Magazine-style underline */
-.editorial-underline {
-  position: relative;
-  display: inline-block;
-}
-
-.editorial-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 60%;
-  height: 3px;
-  background: linear-gradient(90deg, #C65D3B, #F4C430);
-}
-
-/* Drop Cap for articles */
-.drop-cap::first-letter {
-  float: left;
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  line-height: 0.8;
-  padding-right: 0.5rem;
-  color: #C65D3B;
-  font-weight: 600;
-}
-
-/* Masonry Grid */
-.masonry-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-auto-rows: 10px;
-  gap: 0;
 }
 
 /* Animations */
@@ -128,52 +100,25 @@ body {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Recipe Card Hover */
-.recipe-card {
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.recipe-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Navigation Link Hover */
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #C65D3B;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Button Styles */
+/* Button Styles - Modern */
 .btn-primary {
-  background: linear-gradient(135deg, #C65D3B, #A34A2E);
+  background: linear-gradient(135deg, #E07A5F, #C65A45);
   color: white;
   padding: 1rem 2rem;
-  border-radius: 0;
+  border-radius: 9999px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-size: 0.875rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(198, 93, 59, 0.3);
+  box-shadow: 0 8px 25px rgba(224, 122, 95, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 /* Ingredient List Style */
@@ -186,7 +131,7 @@ body {
   content: '•';
   position: absolute;
   left: 0;
-  color: #C65D3B;
+  color: #E07A5F;
   font-weight: bold;
 }
 
@@ -194,31 +139,94 @@ body {
 .step-number {
   width: 40px;
   height: 40px;
-  background: #1E5AA8;
+  background: linear-gradient(135deg, #3D5A80, #2B4A6F);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Playfair Display', serif;
   font-weight: 600;
   font-size: 1.125rem;
+  box-shadow: 0 4px 10px rgba(61, 90, 128, 0.3);
 }
 
-/* Parallax Effect */
-.parallax {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+/* Touch optimization */
+.touch-manipulation {
+  touch-action: manipulation;
 }
 
-@media (max-width: 768px) {
-  .masonry-grid {
-    grid-template-columns: 1fr;
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-inset {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Pull-to-refresh disable for PWA */
+.pwa-no-refresh {
+  overscroll-behavior-y: contain;
+}
+
+/* Image loading placeholder */
+img {
+  background: linear-gradient(110deg, #F2E8D5 8%, #EDE3D0 18%, #F2E8D5 33%);
+  background-size: 200% 100%;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
   }
   
-  .parallax {
-    background-attachment: scroll;
+  .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
   }
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid #E07A5F;
+  outline-offset: 2px;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide scrollbar for mobile carousels */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
