@@ -7,21 +7,30 @@ interface LogoProps {
 
 export function Logo({ size = 'md', showText = true }: LogoProps) {
   const sizes = {
-    sm: { icon: 'w-8 h-8', text: 'text-lg' },
-    md: { icon: 'w-10 h-10', text: 'text-xl' },
-    lg: { icon: 'w-12 h-12', text: 'text-2xl' },
+    sm: { icon: 'w-8 h-8', text: 'text-base' },
+    md: { icon: 'w-10 h-10', text: 'text-lg' },
+    lg: { icon: 'w-12 h-12', text: 'text-xl' },
   };
 
   const s = sizes[size];
 
   return (
     <div className="flex items-center gap-2">
+      {showText && (
+        <div className="flex flex-col leading-none text-right">
+          <span className={`font-bold ${s.text} text-charcoal dark:text-sand`}>
+            وصفات شيماء
+          </span>
+          <span className={`text-xs text-charcoal/60 dark:text-sand/60`}>
+            Chaimae's Recipes
+          </span>
+        </div>
+      )}
+
       {/* Minimalist Tajine Icon */}
       <div className={`${s.icon} relative`}>
         <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
-          {/* Simple circle background */}
           <circle cx="20" cy="20" r="19" stroke="currentColor" strokeWidth="2" fill="none" />
-          {/* Minimalist tajine shape */}
           <path 
             d="M10 28c0-6 4.5-11 10-11s10 5 10 11" 
             stroke="currentColor" 
@@ -38,17 +47,6 @@ export function Logo({ size = 'md', showText = true }: LogoProps) {
           <circle cx="20" cy="14" r="2" fill="currentColor" />
         </svg>
       </div>
-
-      {showText && (
-        <div className="flex flex-col leading-none">
-          <span className={`font-semibold ${s.text} text-charcoal dark:text-white`}>
-            Chaimae's
-          </span>
-          <span className={`text-xs text-charcoal/60 dark:text-white/60`} dir="rtl">
-            وصفات شيماء
-          </span>
-        </div>
-      )}
     </div>
   );
 }

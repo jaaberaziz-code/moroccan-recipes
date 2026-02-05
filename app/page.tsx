@@ -4,7 +4,7 @@ import { RecipeCard } from '@/components/RecipeCard';
 import { Navigation } from '@/components/Navigation';
 import { Logo } from '@/components/Logo';
 import { getAllRecipes } from '@/lib/recipes';
-import { ArrowRight, Heart, BookOpen, Globe } from 'lucide-react';
+import { ArrowLeft, Heart, BookOpen, Award } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -30,43 +30,51 @@ export default function Home() {
               <Logo size="lg" />
             </div>
 
-            <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal dark:text-sand leading-tight mb-6">
-              Taste the Magic of
-              <span className="block bg-gradient-to-r from-terracotta via-saffron to-majorelle bg-clip-text text-transparent">
-                Morocco
+            <h1 className="font-arabic text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal dark:text-sand leading-tight mb-6"
+            >
+              اكتشف سحر
+              <span className="block bg-gradient-to-r from-terracotta via-saffron to-majorelle bg-clip-text text-transparent"
+              >
+                المطبخ المغربي
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-charcoal/70 dark:text-sand/70 mb-4" dir="rtl">
-              اكتشف أسرار المطبخ المغربي الأصيل
+            <p className="text-xl md:text-2xl text-charcoal/70 dark:text-sand/70 mb-6"
+            >
+              {recipes.length}+ وصفة مغربية أصيلة مع صور رائعة
             </p>
 
-            <p className="text-charcoal/60 dark:text-sand/60 mb-10 max-w-lg mx-auto">
-              {recipes.length}+ authentic Moroccan recipes with beautiful photos from traditional Tagine to sweet Pastilla.
+            <p className="text-charcoal/60 dark:text-sand/60 mb-10 max-w-lg mx-auto"
+            >
+              من الطاجين التقليدي إلى البسطيلة الحلوة، اكتشف نكهات المغرب الغنية
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Link
                 href="/recipes"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-terracotta/90 transition-all shadow-lg shadow-terracotta/25"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-terracotta text-white rounded-full font-bold hover:bg-terracotta/90 transition-all shadow-lg shadow-terracotta/25"
               >
-                Explore Recipes
-                <ArrowRight size={20} />
+                استكشف الوصفات
+                <ArrowLeft size={20} />
               </Link>
 
               <a
                 href="#story"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-charcoal text-charcoal dark:text-sand rounded-full font-medium border-2 border-charcoal/10 dark:border-sand/10 hover:border-terracotta transition-all"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-charcoal text-charcoal dark:text-sand rounded-full font-bold border-2 border-charcoal/10 dark:border-sand/10 hover:border-terracotta transition-all"
               >
-                Our Story
+                قصتنا
               </a>
             </div>
           </div>
 
           {/* Featured Image */}
-          <div className="mt-16 max-w-4xl mx-auto">
-            <Link href={`/recipe/${featuredRecipe.id}`} className="block group">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <div className="mt-16 max-w-4xl mx-auto"
+          >
+            <Link href={`/recipe/${featuredRecipe.id}`} className="block group"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl"
+              >
                 <img
                   src={featuredRecipe.image}
                   alt={featuredRecipe.title}
@@ -74,15 +82,19 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <p className="text-white/70 text-sm uppercase tracking-wider mb-2">Featured Recipe</p>
-                  <h3 className="font-editorial text-2xl md:text-3xl font-bold text-white mb-2">
-                    {featuredRecipe.title}
+                <div className="absolute bottom-0 right-0 left-0 p-6 md:p-8 text-right"
+                >
+                  <p className="text-white/70 text-sm uppercase tracking-wider mb-2"
+                  >وصفة مميزة</p>
+                  <h3 className="font-arabic text-2xl md:text-3xl font-bold text-white mb-2"
+                  >
+                    {featuredRecipe.titleAr}
                   </h3>
-                  <div className="flex items-center gap-4 text-white/80 text-sm">
-                    <span>{featuredRecipe.cookTime}</span>
+                  <div className="flex items-center justify-end gap-4 text-white/80 text-sm"
+                  >
+                    <span>{featuredRecipe.servings} أشخاص</span>
                     <span>•</span>
-                    <span>{featuredRecipe.servings} people</span>
+                    <span>{featuredRecipe.cookTime}</span>
                   </div>
                 </div>
               </div>
@@ -92,60 +104,81 @@ export default function Home() {
       </section>
 
       {/* Our Story Section */}
-      <section id="story" className="py-20 md:py-32 bg-white dark:bg-charcoal-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="relative">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=800&q=80"
-                  alt="Moroccan spices and ingredients"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-terracotta rounded-2xl flex items-center justify-center shadow-xl">
-                <span className="text-white font-editorial text-4xl font-bold">142</span>
+      <section id="story" className="py-20 md:py-32 bg-white dark:bg-charcoal-light"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          >
+            <div className="order-2 lg:order-1"
+            >
+              <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4 text-right"
+              >قصتنا</p>
+              
+              <h2 className="font-arabic text-4xl md:text-5xl font-bold text-charcoal dark:text-sand mb-6 text-right"
+              >
+                من المغرب بحب
+              </h2>
+
+              <p className="text-charcoal/70 dark:text-sand/70 text-lg mb-6 leading-relaxed text-right"
+              >
+                وصفات شيماء تجلب لك النكهات الأصيلة من قلب المغرب. مجموعتنا تضم وصفات تقليدية 
+                متوارثة عبر الأجيال، من الطواجن العطرية إلى المعجنات اللذيذة.
+              </p>
+
+              <p className="text-charcoal/70 dark:text-sand/70 mb-8 leading-relaxed text-right"
+              >
+                المطبخ المغربي هو نسيج جميل من التأثيرات الأمازيغية والعربية والمتوسطية والإفريقية.
+              </p>
+
+              <div className="grid grid-cols-3 gap-6"
+              >
+                <div className="text-center"
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center"
+                  >
+                    <Heart className="text-terracotta" size={24} />
+                  </div>
+                  <p className="text-sm text-charcoal/60 dark:text-sand/60"
+                  >صنع بحب</p>
+                </div>
+
+                <div className="text-center"
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center"
+                  >
+                    <BookOpen className="text-majorelle" size={24} />
+                  </div>
+                  <p className="text-sm text-charcoal/60 dark:text-sand/60"
+                  >{recipes.length}+ وصفة</p>
+                </div>
+
+                <div className="text-center"
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center"
+                  >
+                    <Award className="text-saffron" size={24} />
+                  </div>
+                  <p className="text-sm text-charcoal/60 dark:text-sand/60"
+                  >أصيلة</p>
+                </div>
               </div>
             </div>
 
-            <div>
-              <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">Our Story</p>
-              
-              <h2 className="font-editorial text-4xl md:text-5xl font-bold text-charcoal dark:text-sand mb-6">
-                From Morocco with Love
-              </h2>
-
-              <p className="text-charcoal/70 dark:text-sand/70 text-lg mb-6 leading-relaxed">
-                Chaimae's Moroccan Recipes brings you authentic flavors from the heart of Morocco. 
-                Our collection features traditional dishes passed down through generations, 
-                from fragrant tagines to sweet pastries.
-              </p>
-
-              <p className="text-charcoal/70 dark:text-sand/70 mb-8 leading-relaxed" dir="rtl">
-                نقدم لكم وصفات مغربية أصيلة، من الطواجن العطرية إلى الحلويات التقليدية
-              </p>
-
-              <div className="grid grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center">
-                    <Heart className="text-terracotta" size={24} />
-                  </div>
-                  <p className="text-sm text-charcoal/60 dark:text-sand/60">Made with Love</p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center">
-                    <BookOpen className="text-majorelle" size={24} />
-                  </div>
-                  <p className="text-sm text-charcoal/60 dark:text-sand/60">142+ Recipes</p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-3 bg-sand dark:bg-charcoal rounded-2xl flex items-center justify-center">
-                    <Globe className="text-saffron" size={24} />
-                  </div>
-                  <p className="text-sm text-charcoal/60 dark:text-sand/60">Authentic</p>
-                </div>
+            <div className="relative order-1 lg:order-2"
+            >
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=800&q=80"
+                  alt="توابل مغربية"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-terracotta rounded-2xl flex items-center justify-center shadow-xl"
+              >
+                <span className="text-white font-arabic text-4xl font-bold"
+                >{recipes.length}</span>
               </div>
             </div>
           </div>
@@ -153,66 +186,89 @@ export default function Home() {
       </section>
 
       {/* Recipe Grid */}
-      <section className="py-20 bg-sand-light dark:bg-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4">The Collection</p>
-            <h2 className="font-editorial text-3xl md:text-4xl font-bold text-charcoal dark:text-sand">
-              Authentic Recipes
+      <section className="py-20 bg-sand-light dark:bg-charcoal"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="text-center mb-16"
+          >
+            <p className="text-terracotta text-sm tracking-[0.2em] uppercase mb-4"
+            >المجموعة</p>
+            <h2 className="font-arabic text-3xl md:text-4xl font-bold text-charcoal dark:text-sand"
+            >
+              وصفات مغربية أصيلة
             </h2>
-            <p className="text-charcoal/60 dark:text-sand/60 mt-4 max-w-2xl mx-auto">
-              Explore our curated selection of traditional Moroccan dishes with beautiful photos.
+            <p className="text-charcoal/60 dark:text-sand/60 mt-4 max-w-2xl mx-auto"
+            >
+              استكشف مجموعتنا المختارة من الأطباق المغربية التقليدية مع صور رائعة
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {otherRecipes.map((recipe, index) => (
               <RecipeCard key={recipe.id} recipe={recipe} index={index} />
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12"
+          >
             <Link
               href="/recipes"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-charcoal dark:bg-sand text-white dark:text-charcoal rounded-full font-medium hover:bg-charcoal/90 dark:hover:bg-sand/90 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-charcoal dark:bg-sand text-white dark:text-charcoal rounded-full font-bold hover:bg-charcoal/90 dark:hover:bg-sand/90 transition-all"
             >
-              View All Recipes
-              <ArrowRight size={20} />
+              <ArrowLeft size={20} />
+              عرض كل الوصفات
             </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-charcoal dark:bg-black text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div className="text-center md:text-left">
+      <footer className="bg-charcoal dark:bg-black text-white py-16"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="grid md:grid-cols-3 gap-12 mb-12"
+          >
+            <div className="text-center md:text-right"
+            >
               <Logo size="md" />
-              <p className="mt-4 text-white/60 max-w-xs">
-                Authentic Moroccan recipes with a modern twist. Discover the flavors of Morocco.
+              <p className="mt-4 text-white/60 max-w-xs"
+              >
+                وصفات مغربية أصيلة بلمسة عصرية. اكتشف نكهات المغرب.
               </p>
             </div>
 
-            <div className="text-center">
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <nav className="space-y-2">
-                <Link href="/" className="block text-white/60 hover:text-white transition-colors">Home</Link>
-                <Link href="/recipes" className="block text-white/60 hover:text-white transition-colors">Recipes</Link>
-                <Link href="/about" className="block text-white/60 hover:text-white transition-colors">About</Link>
+            <div className="text-center"
+            >
+              <h4 className="font-semibold mb-4"
+              >روابط سريعة</h4>
+              <nav className="space-y-2"
+              >
+                <Link href="/" className="block text-white/60 hover:text-white transition-colors"
+                >الرئيسية</Link>
+                <Link href="/recipes" className="block text-white/60 hover:text-white transition-colors"
+                >الوصفات</Link>
+                <Link href="/about" className="block text-white/60 hover:text-white transition-colors"
+                >من نحن</Link>
               </nav>
             </div>
 
-            <div className="text-center md:text-right">
-              <h4 className="font-semibold mb-4" dir="rtl">وصفات شيماء</h4>
-              <p className="text-white/60" dir="rtl">
-                اكتشف أسرار المطبخ المغربي
+            <div className="text-center md:text-left"
+            >
+              <h4 className="font-semibold mb-4"
+              >Chaimae's Recipes</h4>
+              <p className="text-white/60"
+              >
+                Discover authentic Moroccan flavors
               </p>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 text-center text-white/40 text-sm">
-            <p>© 2026 Chaimae's Moroccan Recipes. All rights reserved.</p>
+          <div className="border-t border-white/10 pt-8 text-center text-white/40 text-sm"
+          >
+            <p>© 2026 وصفات شيماء. جميع الحقوق محفوظة.</p>
           </div>
         </div>
       </footer>

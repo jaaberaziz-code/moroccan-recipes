@@ -1,23 +1,18 @@
 import './globals.css';
-import { Playfair_Display, Noto_Sans_Arabic } from 'next/font/google';
+import { Noto_Sans_Arabic } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
 
 const notoArabic = Noto_Sans_Arabic({
   subsets: ['arabic'],
   variable: '--font-arabic',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata = {
-  title: 'Chaimae\'s Moroccan Recipes | وصفات شيماء المغربية',
-  description: 'Discover authentic Moroccan recipes with beautiful images. From traditional Tagine to Couscous, Harira, and delicious desserts.',
-  keywords: 'Moroccan recipes, Tagine, Couscous, Harira, Moroccan food, Moroccan cuisine',
+  title: 'وصفات شيماء | Chaimae\'s Moroccan Recipes',
+  description: 'اكتشف وصفات مغربية أصيلة مع صور رائعة. من الطاجين التقليدي إلى الكسكس، الحريرة، والحلويات اللذيذة.',
+  keywords: 'وصفات مغربية, طاجين, كسكس, حريرة, أكل مغربي, مطبخ مغربي',
   authors: [{ name: 'Chaimae' }],
   manifest: '/manifest.json',
   icons: {
@@ -45,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${notoArabic.variable}`}>
+    <html lang="ar" dir="rtl" className={`${notoArabic.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -61,7 +56,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased font-sans touch-manipulation">
+      <body className="antialiased font-arabic touch-manipulation">
         <ThemeProvider>
           {children}
         </ThemeProvider>

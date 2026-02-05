@@ -19,9 +19,9 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Home', labelAr: 'الرئيسية' },
-    { href: '/recipes', label: 'Recipes', labelAr: 'الوصفات' },
-    { href: '/about', label: 'About', labelAr: 'من نحن' },
+    { href: '/', label: 'الرئيسية' },
+    { href: '/recipes', label: 'الوصفات' },
+    { href: '/about', label: 'من نحن' },
   ];
 
   return (
@@ -34,9 +34,16 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center">
-            <Logo size="sm" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 rounded-full text-charcoal dark:text-sand hover:bg-sand/50 dark:hover:bg-charcoal/50 transition-colors"
+              aria-label="القائمة"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
 
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
@@ -48,29 +55,11 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            
-            <div className="flex items-center gap-2 ml-4">
-              <ThemeToggle />
-              <Link
-                href="/recipes"
-                className="p-2 rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta hover:text-white transition-all"
-                aria-label="Search recipes"
-              >
-                <Search size={20} />
-              </Link>
-            </div>
           </nav>
 
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-full text-charcoal dark:text-sand hover:bg-sand/50 dark:hover:bg-charcoal/50 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <Link href="/" className="flex items-center">
+            <Logo size="sm" />
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -85,10 +74,9 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl text-charcoal dark:text-sand hover:bg-sand/50 dark:hover:bg-charcoal/50 transition-colors"
+                className="block px-4 py-3 rounded-xl text-charcoal dark:text-sand hover:bg-sand/50 dark:hover:bg-charcoal/50 transition-colors text-right"
               >
                 <span className="font-medium">{link.label}</span>
-                <span className="text-sm text-charcoal/50 dark:text-sand/50" dir="rtl">{link.labelAr}</span>
               </Link>
             ))}
           </nav>
