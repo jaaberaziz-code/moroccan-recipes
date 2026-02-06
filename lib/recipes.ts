@@ -12,9 +12,12 @@ export interface Recipe {
   cookTime: string;
   servings: number;
   difficulty: string;
+  difficultyAr?: string;
   image: string;
   ingredients: string[];
+  ingredientsAr?: string[];
   instructions: string[];
+  instructionsAr?: string[];
   source?: string;
 }
 

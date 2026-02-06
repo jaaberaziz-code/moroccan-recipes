@@ -110,7 +110,7 @@ export default function RecipePage({ params }: RecipePageProps) {
               
               <ul className="space-y-3 text-right"
               >
-                {recipe.ingredients.map((ingredient, index) => (
+                {((recipe.ingredientsAr && recipe.ingredientsAr.length > 0) ? recipe.ingredientsAr : recipe.ingredients).map((ingredient, index) => (
                   <li key={index} className="ingredient-item text-charcoal/80 dark:text-sand/80"
                   >
                     {ingredient}
@@ -129,7 +129,7 @@ export default function RecipePage({ params }: RecipePageProps) {
             
             <div className="space-y-8"
             >
-              {recipe.instructions.map((step, index) => (
+              {((recipe.instructionsAr && recipe.instructionsAr.length > 0) ? recipe.instructionsAr : recipe.instructions).map((step, index) => (
                 <div key={index} className="flex gap-4"
                 >
                   <div className="flex-shrink-0 order-2"
