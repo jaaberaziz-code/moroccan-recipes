@@ -49,6 +49,7 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [darkMode, setDarkMode] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saved'>('idle');
 
   // Load theme preference
   useEffect(() => {
@@ -71,7 +72,29 @@ export default function Dashboard() {
     }
   };
 
+  // Auto-save to localStorage whenever recipes change
   useEffect(() => {
+    if (recipes.length > 0) {
+      localStorage.setItem('dashboard-recipes', JSON.stringify(recipes));
+      setSaveStatus('saved');
+      setTimeout(() => setSaveStatus('idle'), 2000);
+    }
+  }, [recipes]);
+
+  // Load from localStorage on mount (if available)
+  useEffect(() => {
+    const savedRecipes = localStorage.getItem('dashboard-recipes');
+    if (savedRecipes) {
+      try {
+        const parsed = JSON.parse(savedRecipes);
+        setRecipes(parsed);
+        setIsLoading(false);
+        return;
+      } catch (error) {
+        console.error('Error loading from localStorage:', error);
+      }
+    }
+    // Fallback to fetch from server
     loadRecipes();
   }, []);
 
@@ -734,6 +757,14 @@ export default function Dashboard() {
                 <Plus className="w-4 h-4" />
                 <span className="text-sm">جديدة</span>
               </button>
+              
+              {/* Save Status Indicator */}
+              {saveStatus === 'saved' && (
+                <div className="flex items-center gap-1 px-3 py-2 bg-green-100 text-green-700 rounded-xl text-sm">
+                  <span>✓</span>
+                  <span>تم الحفظ</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
