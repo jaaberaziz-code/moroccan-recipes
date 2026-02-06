@@ -264,10 +264,10 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className={`min-h-screen flex items-center justify-center ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta mx-auto"></div>
-          <p className="mt-4 text-gray-600">جاري التحميل...</p>
+          <p className={`mt-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>جاري التحميل...</p>
         </div>
       </div>
     );
@@ -276,19 +276,19 @@ export default function Dashboard() {
   // VIEW MODE - Show recipe details
   if (viewMode === 'view' && currentRecipe) {
     return (
-      <div className="min-h-screen bg-gray-50" dir="rtl">
+      <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`} dir="rtl">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b sticky top-0 z-10">
+        <header className={`shadow-sm border-b sticky top-0 z-10 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
           <div className="max-w-7xl mx-auto px-4 py-4">
             <div className="flex items-center gap-4">
               <button
                 onClick={handleBack}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+                className={`flex items-center gap-2 ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 <ChevronLeft className="w-5 h-5" />
                 <span className="hidden sm:inline">رجوع</span>
               </button>
-              <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
+              <h1 className={`text-lg sm:text-xl font-bold truncate ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 {currentRecipe.titleAr || currentRecipe.title}
               </h1>
             </div>
@@ -297,8 +297,8 @@ export default function Dashboard() {
 
         <main className="max-w-4xl mx-auto px-4 py-6">
           {/* Image */}
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden mb-6">
-            <div className="aspect-video sm:aspect-[21/9] relative bg-gray-100">
+          <div className={`rounded-xl shadow-sm border overflow-hidden mb-6 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <div className={`aspect-video sm:aspect-[21/9] relative ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
               {currentRecipe.image ? (
                 <img
                   src={currentRecipe.image}
@@ -309,7 +309,7 @@ export default function Dashboard() {
                   }}
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                <div className={`w-full h-full flex items-center justify-center ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                   <span>لا توجد صورة</span>
                 </div>
               )}
@@ -318,64 +318,64 @@ export default function Dashboard() {
 
           {/* Info Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
               <Clock className="w-5 h-5 mx-auto mb-1 text-terracotta" />
-              <p className="text-xs text-gray-500">التحضير</p>
-              <p className="font-medium text-sm">{currentRecipe.prepTime || '-'}</p>
+              <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>التحضير</p>
+              <p className={`font-medium text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>{currentRecipe.prepTime || '-'}</p>
             </div>
-            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
               <Clock className="w-5 h-5 mx-auto mb-1 text-majorelle" />
-              <p className="text-xs text-gray-500">الطهي</p>
-              <p className="font-medium text-sm">{currentRecipe.cookTime || '-'}</p>
+              <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>الطهي</p>
+              <p className={`font-medium text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>{currentRecipe.cookTime || '-'}</p>
             </div>
-            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
               <Users className="w-5 h-5 mx-auto mb-1 text-saffron" />
-              <p className="text-xs text-gray-500">الأشخاص</p>
-              <p className="font-medium text-sm">{currentRecipe.servings || '-'}</p>
+              <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>الأشخاص</p>
+              <p className={`font-medium text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>{currentRecipe.servings || '-'}</p>
             </div>
-            <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
+            <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
               <ChefHat className="w-5 h-5 mx-auto mb-1 text-green-600" />
-              <p className="text-xs text-gray-500">الصعوبة</p>
-              <p className="font-medium text-sm">{currentRecipe.difficultyAr || currentRecipe.difficulty}</p>
+              <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>الصعوبة</p>
+              <p className={`font-medium text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>{currentRecipe.difficultyAr || currentRecipe.difficulty}</p>
             </div>
           </div>
 
           {/* Ingredients */}
-          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6 mb-6">
-            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+          <div className={`rounded-xl shadow-sm border p-4 sm:p-6 mb-6 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <h2 className={`text-lg font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               <span className="w-1 h-6 bg-terracotta rounded-full"></span>
               المقادير
             </h2>
             {currentRecipe.ingredientsAr?.length > 0 ? (
               <ul className="space-y-2">
                 {currentRecipe.ingredientsAr.map((ing, i) => (
-                  <li key={i} className="flex items-start gap-3 p-2 bg-gray-50 rounded-lg">
+                  <li key={i} className={`flex items-start gap-3 p-2 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                     <span className="w-6 h-6 bg-terracotta text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">
                       {i + 1}
                     </span>
-                    <span className="text-gray-700">{ing}</span>
+                    <span className={darkMode ? 'text-gray-200' : 'text-gray-700'}>{ing}</span>
                   </li>
                 ))}
               </ul>
             ) : currentRecipe.ingredients?.length > 0 ? (
               <ul className="space-y-2">
                 {currentRecipe.ingredients.map((ing, i) => (
-                  <li key={i} className="flex items-start gap-3 p-2 bg-gray-50 rounded-lg">
+                  <li key={i} className={`flex items-start gap-3 p-2 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                     <span className="w-6 h-6 bg-terracotta text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">
                       {i + 1}
                     </span>
-                    <span className="text-gray-700">{ing}</span>
+                    <span className={darkMode ? 'text-gray-200' : 'text-gray-700'}>{ing}</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-gray-500 text-center py-4">لا توجد مقادير</p>
+              <p className={`text-center py-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>لا توجد مقادير</p>
             )}
           </div>
 
           {/* Instructions */}
-          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6 mb-6">
-            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+          <div className={`rounded-xl shadow-sm border p-4 sm:p-6 mb-6 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <h2 className={`text-lg font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               <span className="w-1 h-6 bg-majorelle rounded-full"></span>
               طريقة التحضير
             </h2>
@@ -386,7 +386,7 @@ export default function Dashboard() {
                     <span className="w-8 h-8 bg-majorelle text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
                       {i + 1}
                     </span>
-                    <p className="text-gray-700 leading-relaxed pt-1">{inst}</p>
+                    <p className={`leading-relaxed pt-1 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{inst}</p>
                   </li>
                 ))}
               </ol>
@@ -397,12 +397,12 @@ export default function Dashboard() {
                     <span className="w-8 h-8 bg-majorelle text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
                       {i + 1}
                     </span>
-                    <p className="text-gray-700 leading-relaxed pt-1">{inst}</p>
+                    <p className={`leading-relaxed pt-1 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{inst}</p>
                   </li>
                 ))}
               </ol>
             ) : (
-              <p className="text-gray-500 text-center py-4">لا توجد خطوات</p>
+              <p className={`text-center py-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>لا توجد خطوات</p>
             )}
           </div>
 
@@ -424,19 +424,19 @@ export default function Dashboard() {
   // EDIT MODE
   if (viewMode === 'edit') {
     return (
-      <div className="min-h-screen bg-gray-50" dir="rtl">
+      <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`} dir="rtl">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b sticky top-0 z-10">
+        <header className={`shadow-sm border-b sticky top-0 z-10 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
           <div className="max-w-4xl mx-auto px-4 py-4">
             <div className="flex items-center gap-4">
               <button
                 onClick={handleBack}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+                className={`flex items-center gap-2 ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 <ChevronLeft className="w-5 h-5" />
                 <span className="hidden sm:inline">رجوع</span>
               </button>
-              <h1 className="text-lg sm:text-xl font-bold text-gray-900">
+              <h1 className={`text-lg sm:text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 {currentRecipe?.id ? 'تعديل الوصفة' : 'وصفة جديدة'}
               </h1>
             </div>
@@ -445,8 +445,8 @@ export default function Dashboard() {
 
         <main className="max-w-4xl mx-auto px-4 py-6">
           {/* Image Preview Section */}
-          <div className="bg-white rounded-xl shadow-sm border overflow-hidden mb-6">
-            <div className="aspect-video sm:aspect-[21/9] relative bg-gray-100">
+          <div className={`rounded-xl shadow-sm border overflow-hidden mb-6 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <div className={`aspect-video sm:aspect-[21/9] relative ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
               {imagePreview ? (
                 <img
                   src={imagePreview}
@@ -455,37 +455,39 @@ export default function Dashboard() {
                   onError={() => setImagePreview(null)}
                 />
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center text-gray-400">
-                  <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-2">
+                <div className={`w-full h-full flex flex-col items-center justify-center ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-2 ${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
                     <span className="text-2xl">🖼️</span>
                   </div>
-                  <span>معاينة الصورة</span>
+                  <span className={darkMode ? 'text-gray-400' : 'text-gray-500'}>معاينة الصورة</span>
                 </div>
               )}
             </div>
-            <div className="p-4 border-t">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+            <div className={`p-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+              <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 رابط الصورة
               </label>
               <input
                 type="url"
                 value={currentRecipe?.image || ''}
                 onChange={(e) => handleImageChange(e.target.value)}
-                className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-sm"
+                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-sm ${
+                  darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                }`}
                 placeholder="https://example.com/image.jpg"
               />
-              <p className="text-xs text-gray-500 mt-2">
+              <p className={`text-xs mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                 أدخل رابط الصورة مباشرة للمعاينة
               </p>
             </div>
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-6">
+          <div className={`rounded-xl shadow-sm border p-4 sm:p-6 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {/* Arabic Title */}
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   الاسم بالعربية *
                 </label>
                 <input
@@ -494,14 +496,16 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, titleAr: e.target.value })
                   }
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                   placeholder="مثال: طاجين مغربي"
                 />
               </div>
 
               {/* French/English Title */}
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   الاسم بالفرنسية
                 </label>
                 <input
@@ -510,14 +514,16 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, title: e.target.value })
                   }
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                   placeholder="Tajine marocain"
                 />
               </div>
 
               {/* Category */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   التصنيف
                 </label>
                 <select
@@ -530,7 +536,9 @@ export default function Dashboard() {
                       categoryAr: cat?.ar || '',
                     });
                   }}
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                 >
                   {CATEGORIES.map((cat) => (
                     <option key={cat.value} value={cat.value}>
@@ -542,7 +550,7 @@ export default function Dashboard() {
 
               {/* Difficulty */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   مستوى الصعوبة
                 </label>
                 <select
@@ -555,7 +563,9 @@ export default function Dashboard() {
                       difficultyAr: diff?.ar || '',
                     });
                   }}
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                 >
                   {DIFFICULTIES.map((diff) => (
                     <option key={diff.value} value={diff.value}>
@@ -567,7 +577,7 @@ export default function Dashboard() {
 
               {/* Prep Time */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   وقت التحضير
                 </label>
                 <input
@@ -576,14 +586,16 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, prepTime: e.target.value })
                   }
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                   placeholder="15 دقيقة"
                 />
               </div>
 
               {/* Cook Time */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   وقت الطهي
                 </label>
                 <input
@@ -592,14 +604,16 @@ export default function Dashboard() {
                   onChange={(e) =>
                     setCurrentRecipe({ ...currentRecipe!, cookTime: e.target.value })
                   }
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                   placeholder="30 دقيقة"
                 />
               </div>
 
               {/* Servings */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   عدد الأشخاص
                 </label>
                 <input
@@ -611,14 +625,16 @@ export default function Dashboard() {
                       servings: parseInt(e.target.value),
                     })
                   }
-                  className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                    darkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'
+                  }`}
                 />
               </div>
             </div>
 
             {/* Ingredients Arabic */}
             <div className="mt-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className={`block text-sm font-medium mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 المقادير (بالعربية)
               </label>
               <div className="space-y-2">
@@ -630,12 +646,16 @@ export default function Dashboard() {
                       onChange={(e) =>
                         updateArrayField('ingredientsAr', index, e.target.value)
                       }
-                      className="flex-1 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                      className={`flex-1 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                        darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                      }`}
                       placeholder="مثال: دجاج (500غ)"
                     />
                     <button
                       onClick={() => removeArrayField('ingredientsAr', index)}
-                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-xl"
+                      className={`px-3 py-2 rounded-xl transition ${
+                        darkMode ? 'text-red-400 hover:bg-red-900/30' : 'text-red-500 hover:bg-red-50'
+                      }`}
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -643,7 +663,9 @@ export default function Dashboard() {
                 ))}
                 <button
                   onClick={() => addArrayField('ingredientsAr')}
-                  className="w-full py-3 border-2 border-dashed border-terracotta text-terracotta rounded-xl hover:bg-terracotta/5"
+                  className={`w-full py-3 border-2 border-dashed border-terracotta rounded-xl hover:bg-terracotta/5 transition ${
+                    darkMode ? 'text-terracotta' : 'text-terracotta'
+                  }`}
                 >
                   + إضافة مكون
                 </button>
@@ -652,7 +674,7 @@ export default function Dashboard() {
 
             {/* Instructions Arabic */}
             <div className="mt-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className={`block text-sm font-medium mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 طريقة التحضير (بالعربية)
               </label>
               <div className="space-y-3">
@@ -660,20 +682,24 @@ export default function Dashboard() {
                   <div key={index} className="flex gap-2">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-medium text-gray-500">الخطوة {index + 1}</span>
+                        <span className={`text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>الخطوة {index + 1}</span>
                       </div>
                       <textarea
                         value={inst}
                         onChange={(e) =>
                           updateArrayField('instructionsAr', index, e.target.value)
                         }
-                        className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent"
+                        className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent ${
+                          darkMode ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' : 'bg-white border-gray-300 text-gray-900'
+                        }`}
                         rows={2}
                       />
                     </div>
                     <button
                       onClick={() => removeArrayField('instructionsAr', index)}
-                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-xl self-end"
+                      className={`px-3 py-2 rounded-xl self-end transition ${
+                        darkMode ? 'text-red-400 hover:bg-red-900/30' : 'text-red-500 hover:bg-red-50'
+                      }`}
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -681,7 +707,9 @@ export default function Dashboard() {
                 ))}
                 <button
                   onClick={() => addArrayField('instructionsAr')}
-                  className="w-full py-3 border-2 border-dashed border-majorelle text-majorelle rounded-xl hover:bg-majorelle/5"
+                  className={`w-full py-3 border-2 border-dashed border-majorelle rounded-xl hover:bg-majorelle/5 transition ${
+                    darkMode ? 'text-majorelle' : 'text-majorelle'
+                  }`}
                 >
                   + إضافة خطوة
                 </button>
@@ -689,10 +717,14 @@ export default function Dashboard() {
             </div>
 
             {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t">
+            <div className={`flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
               <button
                 onClick={handleBack}
-                className="flex-1 px-6 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
+                className={`flex-1 px-6 py-3 border rounded-xl transition ${
+                  darkMode 
+                    ? 'border-gray-600 text-gray-200 hover:bg-gray-700' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}
               >
                 إلغاء
               </button>
@@ -712,30 +744,39 @@ export default function Dashboard() {
 
   // LIST MODE
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`} dir="rtl">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className={`shadow-sm border-b ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+              <h1 className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 🍽️ لوحة التحكم
               </h1>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className={`text-sm mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                 {recipes.length} وصفة متاحة
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition"
+                className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl transition ${
+                  darkMode 
+                    ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
               >
                 {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                 <span className="text-sm">{darkMode ? 'فاتح' : 'داكن'}</span>
               </button>
-              <label className="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 cursor-pointer transition flex-1 sm:flex-none">
-                <Upload className="w-4 h-4" />
-                <span className="text-sm">استيراد</span>
+              
+              <label className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition flex-1 sm:flex-none ${
+                darkMode 
+                  ? 'bg-gray-800 border border-gray-600 hover:bg-gray-700' 
+                  : 'bg-white border border-gray-300 hover:bg-gray-50'
+              }`}>
+                <Upload className={`w-4 h-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+                <span className={`text-sm ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>استيراد</span>
                 <input
                   type="file"
                   accept=".json"
@@ -743,6 +784,7 @@ export default function Dashboard() {
                   className="hidden"
                 />
               </label>
+              
               <button
                 onClick={handleExport}
                 className="flex items-center justify-center gap-2 px-4 py-2 bg-terracotta text-white rounded-xl hover:bg-terracotta/90 transition flex-1 sm:flex-none"
@@ -750,6 +792,7 @@ export default function Dashboard() {
                 <Download className="w-4 h-4" />
                 <span className="text-sm">تصدير</span>
               </button>
+              
               <button
                 onClick={handleNewRecipe}
                 className="flex items-center justify-center gap-2 px-4 py-2 bg-majorelle text-white rounded-xl hover:bg-majorelle/90 transition flex-1 sm:flex-none"
@@ -760,7 +803,9 @@ export default function Dashboard() {
               
               {/* Save Status Indicator */}
               {saveStatus === 'saved' && (
-                <div className="flex items-center gap-1 px-3 py-2 bg-green-100 text-green-700 rounded-xl text-sm">
+                <div className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm ${
+                  darkMode ? 'bg-green-900/50 text-green-400' : 'bg-green-100 text-green-700'
+                }`}>
                   <span>✓</span>
                   <span>تم الحفظ</span>
                 </div>
@@ -774,25 +819,33 @@ export default function Dashboard() {
         {/* Search */}
         <div className="mb-6">
           <div className="relative">
-            <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className={`absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} />
             <input
               type="text"
               placeholder="ابحث عن وصفة..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pr-12 pl-4 py-4 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-base"
+              className={`w-full pr-12 pl-4 py-4 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-base ${
+                darkMode 
+                  ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500' 
+                  : 'bg-white border-gray-300 text-gray-900'
+              }`}
             />
           </div>
         </div>
 
         {/* How to Export Guide */}
-        <div className="bg-gradient-to-r from-terracotta/10 to-majorelle/10 border border-terracotta/20 rounded-xl p-4 mb-6">
-          <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+        <div className={`border rounded-xl p-4 mb-6 ${
+          darkMode 
+            ? 'bg-gradient-to-r from-terracotta/20 to-majorelle/20 border-terracotta/30' 
+            : 'bg-gradient-to-r from-terracotta/10 to-majorelle/10 border-terracotta/20'
+        }`}>
+          <h3 className={`font-bold mb-2 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             <span>📤</span> كيفية حفظ التغييرات
           </h3>
-          <ol className="text-sm text-gray-700 space-y-1 mr-5 list-decimal">
+          <ol className={`text-sm space-y-1 mr-5 list-decimal ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
             <li>اضغط على زر <strong>"تصدير"</strong> أعلاه</li>
-            <li>سيتم تحميل ملف <code>recipes.json</code></li>
+            <li>سيتم تحميل ملف <code className={darkMode ? 'bg-gray-700 px-1 rounded' : 'bg-gray-100 px-1 rounded'}>recipes.json</code></li>
             <li>استبدل الملف في GitHub (data/recipes.json)</li>
             <li>سيتم تحديث الموقع تلقائياً خلال 2 دقيقة</li>
           </ol>
@@ -800,24 +853,24 @@ export default function Dashboard() {
 
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
-            <p className="text-xs text-gray-500">الوصفات</p>
-            <p className="text-2xl font-bold text-gray-900">{recipes.length}</p>
+          <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>الوصفات</p>
+            <p className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{recipes.length}</p>
           </div>
-          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
-            <p className="text-xs text-gray-500">بالعربية</p>
+          <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>بالعربية</p>
             <p className="text-2xl font-bold text-green-600">
               {recipes.filter((r) => r.titleAr && /[\u0600-\u06FF]/.test(r.titleAr)).length}
             </p>
           </div>
-          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
-            <p className="text-xs text-gray-500">فرنسية</p>
+          <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>فرنسية</p>
             <p className="text-2xl font-bold text-amber-600">
               {recipes.filter((r) => !r.titleAr || !/[\u0600-\u06FF]/.test(r.titleAr)).length}
             </p>
           </div>
-          <div className="bg-white p-4 rounded-xl shadow-sm border text-center">
-            <p className="text-xs text-gray-500">النتائج</p>
+          <div className={`p-4 rounded-xl shadow-sm border text-center ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+            <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>النتائج</p>
             <p className="text-2xl font-bold text-majorelle">{filteredRecipes.length}</p>
           </div>
         </div>
@@ -829,10 +882,12 @@ export default function Dashboard() {
             return (
               <div
                 key={recipe.id}
-                className="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition"
+                className={`rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition ${
+                  darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+                }`}
               >
                 {/* Image */}
-                <div className="aspect-video relative bg-gray-100">
+                <div className={`aspect-video relative ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
                   <img
                     src={recipe.image || '/images/placeholder.jpg'}
                     alt={recipe.titleAr || recipe.title}
@@ -845,8 +900,8 @@ export default function Dashboard() {
                     <span
                       className={`px-2 py-1 rounded-lg text-xs font-medium ${
                         hasArabic
-                          ? 'bg-green-100 text-green-700'
-                          : 'bg-amber-100 text-amber-700'
+                          ? (darkMode ? 'bg-green-900/50 text-green-400' : 'bg-green-100 text-green-700')
+                          : (darkMode ? 'bg-amber-900/50 text-amber-400' : 'bg-amber-100 text-amber-700')
                       }`}
                     >
                       {hasArabic ? '✓ عربي' : '⚡ فرنسي'}
@@ -856,24 +911,25 @@ export default function Dashboard() {
 
                 {/* Content */}
                 <div className="p-4">
-                  <h3 className="font-bold text-gray-900 mb-1 line-clamp-1">
+                  <h3 className={`font-bold mb-1 line-clamp-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     {recipe.titleAr || recipe.title}
                   </h3>
+                  
                   {recipe.titleAr && recipe.title && (
-                    <p className="text-sm text-gray-500 mb-2 line-clamp-1">{recipe.title}</p>
+                    <p className={`text-sm mb-2 line-clamp-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{recipe.title}</p>
                   )}
                   
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2 py-1 bg-gray-100 rounded-lg text-xs">
+                    <span className={`px-2 py-1 rounded-lg text-xs ${darkMode ? 'bg-gray-700 text-gray-200' : 'bg-gray-100 text-gray-700'}`}>
                       {recipe.categoryAr || recipe.category}
                     </span>
                     <span
                       className={`px-2 py-1 rounded-lg text-xs ${
                         recipe.difficulty === 'Easy'
-                          ? 'bg-green-100 text-green-700'
+                          ? (darkMode ? 'bg-green-900/50 text-green-400' : 'bg-green-100 text-green-700')
                           : recipe.difficulty === 'Hard'
-                          ? 'bg-red-100 text-red-700'
-                          : 'bg-yellow-100 text-yellow-700'
+                          ? (darkMode ? 'bg-red-900/50 text-red-400' : 'bg-red-100 text-red-700')
+                          : (darkMode ? 'bg-yellow-900/50 text-yellow-400' : 'bg-yellow-100 text-yellow-700')
                       }`}
                     >
                       {recipe.difficultyAr || recipe.difficulty}
@@ -884,21 +940,35 @@ export default function Dashboard() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleView(recipe)}
-                      className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition text-sm"
+                      className={`flex-1 flex items-center justify-center gap-1 px-3 py-2 rounded-lg transition text-sm ${
+                        darkMode 
+                          ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' 
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                     >
                       <Eye className="w-4 h-4" />
                       <span>عرض</span>
                     </button>
+                    
                     <button
                       onClick={() => handleEdit(recipe)}
-                      className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-terracotta/10 text-terracotta rounded-lg hover:bg-terracotta/20 transition text-sm"
+                      className={`flex-1 flex items-center justify-center gap-1 px-3 py-2 rounded-lg transition text-sm ${
+                        darkMode 
+                          ? 'bg-terracotta/20 text-terracotta hover:bg-terracotta/30' 
+                          : 'bg-terracotta/10 text-terracotta hover:bg-terracotta/20'
+                      }`}
                     >
                       <Edit2 className="w-4 h-4" />
                       <span>تعديل</span>
                     </button>
+                    
                     <button
                       onClick={() => handleDelete(recipe.id)}
-                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg transition"
+                      className={`px-3 py-2 rounded-lg transition ${
+                        darkMode 
+                          ? 'text-red-400 hover:bg-red-900/30' 
+                          : 'text-red-500 hover:bg-red-50'
+                      }`}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -910,9 +980,11 @@ export default function Dashboard() {
         </div>
 
         {filteredRecipes.length === 0 && (
-          <div className="text-center py-12 bg-white rounded-xl border">
+          <div className={`text-center py-12 rounded-xl border ${
+            darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+          }`}>
             <div className="text-4xl mb-2">🔍</div>
-            <p className="text-gray-500">لا توجد وصفات مطابقة للبحث</p>
+            <p className={darkMode ? 'text-gray-400' : 'text-gray-500'}>لا توجد وصفات مطابقة للبحث</p>
           </div>
         )}
       </main>
