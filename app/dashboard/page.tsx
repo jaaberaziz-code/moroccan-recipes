@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Search, Edit2, Trash2, Download, Upload, Save, Eye, X, ChevronLeft, Clock, Users, ChefHat } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, Download, Upload, Save, Eye, X, ChevronLeft, Clock, Users, ChefHat, Sun, Moon } from 'lucide-react';
 
 interface Recipe {
   id: string;
@@ -48,6 +48,28 @@ export default function Dashboard() {
   const [currentRecipe, setCurrentRecipe] = useState<Recipe | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load theme preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('dashboard-theme');
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem('dashboard-theme', newMode ? 'dark' : 'light');
+    if (newMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   useEffect(() => {
     loadRecipes();
@@ -681,6 +703,13 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
+              <button
+                onClick={toggleTheme}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition"
+              >
+                {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                <span className="text-sm">{darkMode ? 'فاتح' : 'داكن'}</span>
+              </button>
               <label className="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 cursor-pointer transition flex-1 sm:flex-none">
                 <Upload className="w-4 h-4" />
                 <span className="text-sm">استيراد</span>
