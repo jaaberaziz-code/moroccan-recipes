@@ -73,27 +73,46 @@ export default function Dashboard() {
   );
 
   const handleNewRecipe = () => {
+    // EXAMPLE RECIPE - Pre-filled template
     setCurrentRecipe({
       id: '',
-      title: '',
-      titleAr: '',
-      description: '',
-      descriptionAr: '',
+      title: 'Couscous Royal',
+      titleAr: 'كسكس ملكي',
+      description: 'Un délicieux couscous royal avec viande et légumes',
+      descriptionAr: 'كسكس ملكي لذيذ باللحم والخضار',
       category: 'Main Course',
       categoryAr: 'طبق رئيسي',
-      prepTime: '',
-      cookTime: '',
-      servings: 4,
+      prepTime: '20 دقيقة',
+      cookTime: '45 دقيقة',
+      servings: 6,
       difficulty: 'Medium',
       difficultyAr: 'متوسط',
-      image: '',
-      ingredients: [],
-      ingredientsAr: [],
-      instructions: [],
-      instructionsAr: [],
+      image: 'https://img.cuisineaz.com/660x660/2016/04/28/i15329-couscous-royal.jpg',
+      ingredients: [
+        'Semoule (500g)',
+        'Agneau (400g)',
+        'Poulet (1)',
+        'Légumes variés'
+      ],
+      ingredientsAr: [
+        'سميد (500غ)',
+        'لحم خروف (400غ)',
+        'دجاج (1)',
+        'خضار مشكل'
+      ],
+      instructions: [
+        'Préparer la semoule avec de l\'huile et de l\'eau salée',
+        'Faire cuire la viande avec les épices',
+        'Ajouter les légumes et laisser mijoter'
+      ],
+      instructionsAr: [
+        'حضري السميد بالزيت والماء المالح',
+        'اطهي اللحم مع التوابل',
+        'أضيفي الخضار واتركيها تتسبك'
+      ],
       source: '',
     });
-    setImagePreview(null);
+    setImagePreview('https://img.cuisineaz.com/660x660/2016/04/28/i15329-couscous-royal.jpg');
     setViewMode('edit');
   };
 
@@ -704,6 +723,19 @@ export default function Dashboard() {
               className="w-full pr-12 pl-4 py-4 border rounded-xl focus:ring-2 focus:ring-terracotta focus:border-transparent text-base"
             />
           </div>
+        </div>
+
+        {/* How to Export Guide */}
+        <div className="bg-gradient-to-r from-terracotta/10 to-majorelle/10 border border-terracotta/20 rounded-xl p-4 mb-6">
+          <h3 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+            <span>📤</span> كيفية حفظ التغييرات
+          </h3>
+          <ol className="text-sm text-gray-700 space-y-1 mr-5 list-decimal">
+            <li>اضغط على زر <strong>"تصدير"</strong> أعلاه</li>
+            <li>سيتم تحميل ملف <code>recipes.json</code></li>
+            <li>استبدل الملف في GitHub (data/recipes.json)</li>
+            <li>سيتم تحديث الموقع تلقائياً خلال 2 دقيقة</li>
+          </ol>
         </div>
 
         {/* Stats */}
